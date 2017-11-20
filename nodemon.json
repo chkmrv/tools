@@ -1,0 +1,16 @@
+{
+  "ignore": [
+    ".git",
+    "node_modules/**/node_modules"
+  ],
+  "verbose": false,
+  "watch": [
+    "config",
+    "scripts",
+    "server",
+    "public",
+    "gulpfile.babel.js",
+    "package.json",
+    ".env"
+  ]
+}

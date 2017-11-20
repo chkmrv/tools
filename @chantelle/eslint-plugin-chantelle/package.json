@@ -1,0 +1,30 @@
+{
+  "name": "@chantelle/eslint-plugin-chantelle",
+  "main": "./index.js",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org:editionlingerie/chantelle-tools.git"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.2",
+    "eslint-config-cleanjs": "^4.0.0",
+    "eslint-config-prettier": "^2.7.0",
+    "eslint-config-react-app": "^2.0.1",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-better": "^0.1.5",
+    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.4.0",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "eslint": "^4.11.0"
+  },
+  "scripts": {
+    "lint": "eslint . --fix"
+  }
+}

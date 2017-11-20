@@ -1,0 +1,40 @@
+{
+  "name": "@chantelle/babel-preset-chantelle",
+  "version": "0.0.0",
+  "description": "Common Babel preset for Groupe Chantelle",
+  "main": "./index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org:editionlingerie/chantelle-tools.git"
+  },
+  "keywords": [
+    "babel",
+    "preset",
+    "chantelle"
+  ],
+  "author": "",
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/editionlingerie/chantelle-babel-preset-chantelle#readme",
+  "dependencies": {
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-flow-runtime": "^0.11.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react-app": "^3.1.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "eslint-plugin-flowtype": "^2.39.1"
+  },
+  "devDependencies": {
+    "@chantelle/eslint-plugin-chantelle": "0.0.0"
+  },
+  "peerDependencies": {
+    "babel-runtime": "^6.*"
+  },
+  "files": [
+    "index.js"
+  ]
+}

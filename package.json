@@ -1,0 +1,38 @@
+{
+  "name": "@chantelle/tools",
+  "version": "0.0.0",
+  "description": "Common tools for Groupe Chantelle",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "lerna bootstrap",
+    "install-eslint-plugins": "npm explore @chantelle/eslint-plugin -- npm run install-plugins",
+    "start": "npm explore @chantelle/scripts -- npm start",
+    "test": "npm explore @chantelle/scripts -- npm test",
+    "build": "npm explore @chantelle/scripts -- npm build",
+    "lint": "lerna run lint --stream",
+    "clean": "lerna clean --yes && rm -rf ./node_modules && rm -rf ./package-lock.json && rm -rf ./**/**/package-lock.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/editionlingerie/chantelle-tools.git"
+  },
+  "keywords": [
+    "build",
+    "webpack",
+    "devops",
+    "tools",
+    "ci",
+    "integration",
+    "bundle",
+    "gulp"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@chantelle/babel-preset-chantelle": "0.0.0",
+    "@chantelle/config": "0.0.0",
+    "@chantelle/eslint-plugin-chantelle": "0.0.0",
+    "@chantelle/scripts": "0.0.0",
+    "@chantelle/util": "0.0.0",
+    "lerna": "^2.5.1"
+  }
+}
