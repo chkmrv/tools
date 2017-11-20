@@ -1,22 +1,24 @@
 {
   "name": "@chantelle/scripts",
-  "version": "0.0.0",
+  "version": "0.0.1-2",
   "scripts": {
     "lint": "eslint . --fix",
     "start": "nodemon --exec 'node ./start'",
     "test": "nodemon --exec 'node ./test.js --env=jsdom'"
   },
   "dependencies": {
-    "@chantelle/util": "^0.0.0",
+    "@chantelle/util": "^0.0.1-2",
     "babel-core": "^6.26.0",
     "eslint-plugin-flowtype": "^2.39.1"
   },
   "devDependencies": {
-    "eslint": "^4.11.0",
-    "@chantelle/eslint-plugin-chantelle": "0.0.0"
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-2",
+    "eslint": "^4.11.0"
   },
   "eslintConfig": {
-    "extends": "plugin:@chantelle/chantelle/chantelle"
+    "extends": [
+      "@chantelle/chantelle"
+    ]
   },
   "babel": {
     "presets": [

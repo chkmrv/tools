@@ -1,17 +1,17 @@
 {
   "name": "@chantelle/util",
   "main": "./index.es5.js",
-  "version": "0.0.0",
+  "version": "0.0.1-2",
   "dependencies": {
-    "@chantelle/babel-preset-chantelle": "0.0.0",
+    "@chantelle/babel-preset-chantelle": "^0.0.1-2",
     "@nod/debug-with-package-name": "^0.1.0",
     "babel-core": "^6.26.0",
     "flow-bin": "^0.59.0",
     "flow-runtime": "^0.16.0"
   },
   "devDependencies": {
-    "@chantelle/eslint-plugin-chantelle": "0.0.0",
-    "@chantelle/eslint-config-chantelle": "0.0.0",
+    "@chantelle/eslint-config-chantelle": "^0.0.1-2",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-2",
     "eslint": "^4.11.0"
   },
   "babel": {
@@ -20,7 +20,9 @@
     ]
   },
   "eslintConfig": {
-    "extends": ["@chantelle/chantelle"]
+    "extends": [
+      "@chantelle/chantelle"
+    ]
   },
   "scripts": {
     "lint": "eslint . --fix",

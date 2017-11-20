@@ -1,6 +1,6 @@
 {
   "name": "@chantelle/config",
-  "version": "0.0.0",
+  "version": "0.0.1-2",
   "main": "./index.es5.js",
   "scripts": {
     "lint": "eslint . --fix"
@@ -10,9 +10,10 @@
     "url": "git+ssh://git@bitbucket.org:editionlingerie/chantelle-tools.git"
   },
   "dependencies": {
-    "@chantelle/babel-preset-chantelle": "0.0.0",
-    "@chantelle/eslint-plugin-chantelle": "0.0.0",
-    "@chantelle/util": "0.0.0",
+    "@chantelle/babel-preset-chantelle": "^0.0.1-2",
+    "@chantelle/eslint-config-chantelle": "^0.0.1-2",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-2",
+    "@chantelle/util": "^0.0.1-2",
     "eslint": "^4.11.0",
     "eslint-plugin-flowtype": "^2.39.1"
   },
@@ -22,6 +23,8 @@
     ]
   },
   "eslintConfig": {
-    "extends": "plugin:@chantelle/chantelle/chantelle"
+    "extends": [
+      "@chantelle/chantelle"
+    ]
   }
 }
