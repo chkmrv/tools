@@ -1,6 +1,6 @@
 {
   "name": "@chantelle/eslint-config-legacy",
-  "version": "0.0.1-3",
+  "version": "0.0.1-4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-3"
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-4"
   }
 }

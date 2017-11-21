@@ -1,6 +1,6 @@
 {
   "name": "@chantelle/babel-preset-chantelle",
-  "version": "0.0.1-3",
+  "version": "0.0.1-4",
   "description": "Common Babel preset for Groupe Chantelle",
   "main": "./index.js",
   "scripts": {

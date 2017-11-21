@@ -10,19 +10,20 @@ import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages'
 import printHostingInstructions from 'react-dev-utils/printHostingInstructions'
 import FileSizeReporter from 'react-dev-utils/FileSizeReporter'
 import printBuildError from 'react-dev-utils/printBuildError'
+import { processEnv, thrower } from '@chantelle/util'
 
 const debug = debugFactory('webpack-build')
 
 // Do this as the first thing so that any code reading it knows the right env.
-process.env.BABEL_ENV = 'production'
-process.env.NODE_ENV = 'production'
+processEnv({
+  BABEL_ENV: 'production',
+  NODE_ENV: 'production',
+})
 
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
 // terminate the Node.js process with a non-zero exit code.
-process.on('unhandledRejection', err => {
-  throw err
-})
+process.on('unhandledRejection', thrower)
 
 // Ensure environment variables are read.
 require('../config/env')
@@ -130,7 +131,7 @@ function build(previousFileSizes) {
               'Most CI servers set it automatically.\n'
           )
         )
-        return reject(new Error(messages.warnings.join('\n\n')))
+        return reject(Error(messages.warnings.join('\n\n')))
       }
       return resolve({
         stats,
@@ -142,7 +143,7 @@ function build(previousFileSizes) {
 }
 
 function copyPublicFolder() {
-  fs.copySync(appPublic, appBuild, {
+  return fs.copySync(appPublic, appBuild, {
     dereference: true,
     filter: file => file !== appHtml,
   })

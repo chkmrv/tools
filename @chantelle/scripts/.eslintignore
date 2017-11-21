@@ -1,2 +1,2 @@
-index.es5.js
+*.es5.js
 node_modules

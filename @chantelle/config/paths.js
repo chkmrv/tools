@@ -12,7 +12,7 @@ export const resolveApp = relativePath =>
 const envPublicUrl = process.env.PUBLIC_URL
 
 export const ensureSlash = (path, needsSlash) => {
-  const hasSlash = endsWith('/')
+  const hasSlash = path.endsWith('/')
   if (hasSlash && !needsSlash) {
     return substr(path, path.length - 1)
   } else if (!hasSlash && needsSlash) {

@@ -1,11 +1,5 @@
 // @flow
 
-export const tapDebug = (debug: Function) =>
-  (variable: any, description?: string = '%O'): any => [
-    debug(description, variable),
-    variable
-  ][1]
-
 export const createNumberSequence = ( number: number ): Array<*> =>
     [ ...Array( number ).keys() ]
 
@@ -17,7 +11,8 @@ export const valueOrDefaultValue = ( value: any, defaultValue: any ) =>
         ? value
         : defaultValue
 
-export const thrower = ( error: Error ) => { throw error } // eslint-disable-line fp/no-nil,fp/no-throw, better/explicit-return
+export const thrower = ( error: Error ) => // eslint-disable-line fp/no-nil, better/explicit-return
+  { throw error } // eslint-disable-line fp/no-throw
 
 export const pipe = ( functions: Array<Function> ) =>
     (arg: any) =>
@@ -59,4 +54,11 @@ export const objectWithoutUndefinedValues = ( objectToIterate: Object ): Object 
                     ...{ [ key ]: value },
                 }, {})
 
-export const test = () => console.log('test')
+export const tapDebug = (debug: Function) =>
+  (variable: any, description?: string = '%O'): any => [
+    debug(description, variable),
+    variable,
+  ][1]
+
+export const processEnv = (newEnv: Object): Object =>
+  process.env = { ...process.env, ...newEnv } //eslint-disable-line fp/no-mutation

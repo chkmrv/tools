@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "lerna bootstrap",
-    "install-eslint-plugins": "npm explore @chantelle/eslint-plugin -- npm run install-plugins",
     "start": "npm explore @chantelle/scripts -- npm start",
     "test": "npm explore @chantelle/scripts -- npm test",
     "build": "npm explore @chantelle/scripts -- npm build",
@@ -28,13 +27,13 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.0.1-2",
-    "@chantelle/config": "^0.0.1-2",
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-2",
-    "@chantelle/eslint-config-chantelle": "^0.0.1-2",
-    "@chantelle/eslint-config-legacy": "^0.0.1-2",
-    "@chantelle/scripts": "^0.0.1-2",
-    "@chantelle/util": "^0.0.1-2",
+    "@chantelle/babel-preset-chantelle": "^0.0.1-3",
+    "@chantelle/config": "^0.0.1-3",
+    "@chantelle/eslint-config-chantelle": "^0.0.1-3",
+    "@chantelle/eslint-config-legacy": "^0.0.1-3",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-3",
+    "@chantelle/scripts": "^0.0.1-3",
+    "@chantelle/util": "^0.0.1-3",
     "lerna": "^2.5.1"
   },
   "eslintConfig": {
