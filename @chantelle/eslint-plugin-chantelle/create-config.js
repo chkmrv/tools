@@ -12,7 +12,7 @@ const getConfigRules = config => Object
   .keys(config.rules)
   .reduce((rules, ruleName) => {
     const result = Object.assign({}, rules)
-    const key = isPluginRule(ruleName) ? `chantelle/${ ruleName }` : ruleName
+    const key = isPluginRule(ruleName) ? `${ ruleName }` : ruleName
 
     result[key] = config.rules[ruleName]
 

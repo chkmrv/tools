@@ -1,7 +1,7 @@
 {
   "name": "@chantelle/eslint-plugin-chantelle",
   "main": "./index.js",
-  "version": "0.0.1-2",
+  "version": "0.0.1-3",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org:editionlingerie/chantelle-tools.git"

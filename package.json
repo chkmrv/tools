@@ -28,11 +28,23 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "@chantelle/babel-preset-chantelle": "0.0.0",
-    "@chantelle/config": "0.0.0",
-    "@chantelle/eslint-plugin-chantelle": "0.0.0",
-    "@chantelle/scripts": "0.0.0",
-    "@chantelle/util": "0.0.0",
+    "@chantelle/babel-preset-chantelle": "^0.0.1-2",
+    "@chantelle/config": "^0.0.1-2",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-2",
+    "@chantelle/eslint-config-chantelle": "^0.0.1-2",
+    "@chantelle/eslint-config-legacy": "^0.0.1-2",
+    "@chantelle/scripts": "^0.0.1-2",
+    "@chantelle/util": "^0.0.1-2",
     "lerna": "^2.5.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@chantelle/chantelle"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "@chantelle/chantelle"
+    ]
   }
 }

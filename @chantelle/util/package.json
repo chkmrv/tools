@@ -1,17 +1,18 @@
 {
   "name": "@chantelle/util",
   "main": "./index.es5.js",
-  "version": "0.0.1-2",
+  "version": "0.0.1-3",
   "dependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.0.1-2",
+    "@chantelle/babel-preset-chantelle": "^0.0.1-3",
     "@nod/debug-with-package-name": "^0.1.0",
     "babel-core": "^6.26.0",
     "flow-bin": "^0.59.0",
     "flow-runtime": "^0.16.0"
   },
   "devDependencies": {
-    "@chantelle/eslint-config-chantelle": "^0.0.1-2",
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-2",
+    "@chantelle/eslint-config-chantelle": "^0.0.1-3",
+    "@chantelle/eslint-config-legacy": "^0.0.1-3",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-3",
     "eslint": "^4.11.0"
   },
   "babel": {

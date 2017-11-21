@@ -12,4 +12,6 @@ module.exports = { //eslint-disable-line
   rules: Object.assign(
     {},
     rules,
-    chantelleRules ) }
+    chantelleRules
+  ),
+}
