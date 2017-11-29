@@ -27,7 +27,7 @@
   ],
   "license": "UNLICENSED",
   "dependencies": {
-    "@chantelle/scripts": "^0.0.1-4",
+    "@chantelle/scripts": "^0.0.1-5",
     "lerna": "^2.5.1"
   },
   "devDependencies": {}
