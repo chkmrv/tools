@@ -1,6 +1,6 @@
 {
   "name": "@chantelle/config",
-  "version": "0.0.1-4",
+  "version": "0.0.1-5",
   "main": "./build/main.js",
   "description": "Stores default common configurations",
   "scripts": {
@@ -14,11 +14,11 @@
     "url": "git+ssh://git@bitbucket.org:editionlingerie/chantelle-tools.git"
   },
   "dependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.0.1-4",
-    "@chantelle/eslint-config-chantelle": "^0.0.1-4",
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-4",
-    "@chantelle/scripts": "^0.0.1-4",
-    "@chantelle/util": "^0.0.1-4",
+    "@chantelle/babel-preset-chantelle": "^0.0.1-5",
+    "@chantelle/eslint-config-chantelle": "^0.0.1-5",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-5",
+    "@chantelle/scripts": "^0.0.1-5",
+    "@chantelle/util": "^0.0.1-5",
     "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",
     "babel-register": "^6.26.0",
