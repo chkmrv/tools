@@ -4,21 +4,34 @@
 
 - ### Chantelle
   ```bash
-  npm i @chantelle/eslint-plugin-chantelle @chantelle/eslint-config-chantelle
+  npm i -D @chantelle/eslint-plugin-chantelle @chantelle/eslint-config-chantelle eslint-plugin-prettier prettier
   ```
 
   `package.json`
-
   ```json
   "eslintConfig": {
-    "extends": ["@chantelle/chantelle"]
+    "extends": ["@chantelle/chantelle"],
   }
-```
+  ```
+
+- ### Chantelle CommonJs
+  ```bash
+  npm i -D @chantelle/eslint-plugin-chantelle @chantelle/eslint-config-chantelle eslint-plugin-prettier prettier
+  ```
+
+  `package.json`
+  ```json
+  "eslintConfig": {
+    "extends": ["@chantelle/chantelleCommonJs"],
+  }
+  ```
 
 - ### Legacy:
-```bash
-npm i @chantelle/eslint-plugin-chantelle @chantelle/eslint-config-legacy
-```
+  ```bash
+  npm i -D @chantelle/eslint-plugin-chantelle @chantelle/eslint-config-legacy eslint-plugin-prettier prettier
+  ```
+
+  `package.json`
   ```json
   "eslintConfig": {
     "extends": ["@chantelle/legacy"]

@@ -3,8 +3,11 @@
   "version": "0.0.1-4",
   "description": "Common Babel preset for Groupe Chantelle",
   "main": "./index.js",
+  "files": [
+    "index.js"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\""
   },
   "repository": {
     "type": "git",
@@ -23,15 +26,25 @@
     "babel-plugin-flow-runtime": "^0.11.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-flow-runtime": "^0.7.0",
     "babel-preset-react-app": "^3.1.0",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
-    "eslint-plugin-flowtype": "^2.39.1"
+    "flow-runtime": "^0.16.0"
   },
-  "peerDependencies": {
-    "babel-runtime": "^6.*"
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": 1
+    }
   },
-  "files": [
-    "index.js"
-  ]
+  "devDependencies": {
+    "eslint": "^4.12.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "husky": "^0.14.3",
+    "prettier": "^1.8.2"
+  }
 }

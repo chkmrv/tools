@@ -1,7 +1,7 @@
 import fs from 'fs'
 import dotenv from 'dotenv'
 
-const path = './config/env.json'
+const path = '@chantelle/config/env.json'
 dotenv.load()
 
 export const Config = (() => {

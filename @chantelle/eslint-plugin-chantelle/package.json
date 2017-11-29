@@ -1,16 +1,16 @@
 {
   "name": "@chantelle/eslint-plugin-chantelle",
-  "main": "./index.js",
+  "main": "./build/main.js",
   "version": "0.0.1-4",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org:editionlingerie/chantelle-tools.git"
   },
   "dependencies": {
+    "@chantelle/babel-preset-chantelle": "0.0.1-4",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
     "eslint-config-cleanjs": "^4.0.0",
-    "eslint-config-prettier": "^2.7.0",
     "eslint-config-react-app": "^2.0.1",
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-better": "^0.1.5",
@@ -18,13 +18,31 @@
     "eslint-plugin-fp": "^2.3.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "prettier": "^1.8.2"
   },
   "devDependencies": {
-    "eslint": "^4.11.0"
+    "ava": "^0.24.0",
+    "backpack-core": "^0.4.3",
+    "eslint": "^4.11.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "husky": "^0.14.3",
+    "prettier": "^1.8.2"
   },
+  "license": "MIT",
   "scripts": {
-    "lint": "eslint . --fix"
+    "test": "ava --watch",
+    "test-once": "ava",
+    "start": "nodemon --ignore \"build\" --exec \"npm run build\"",
+    "lint": "eslint ./src --fix",
+    "build": "backpack build",
+    "prepublish": "npm run build"
+  },
+  "babel": {
+    "presets": [
+      "@chantelle/chantelle"
+    ]
   }
 }

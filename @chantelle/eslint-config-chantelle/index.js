@@ -1,1 +1,2 @@
-module.exports = require('@chantelle/eslint-plugin-chantelle').configs.chantelle
+const { chantelle } = require('@chantelle/eslint-plugin-chantelle')
+module.exports = chantelle

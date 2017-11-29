@@ -1,27 +1,35 @@
-'use strict'
+/* eslint fp/no-mutation:0, import/no-commonjs:0 */
 
-process.env.BABEL_ENV = process.env.BABEL_ENV || 'development'
+process.env.BABEL_ENV = process.env.BABEL_ENV || "development";
 
 module.exports = {
   plugins: [
-    'babel-plugin-flow-runtime',
-    'babel-plugin-add-module-exports',
-    'babel-plugin-transform-decorators-legacy',
-  ].map(require.resolve),
+    [
+      require.resolve("babel-plugin-flow-runtime"),
+      {
+        assert: true,
+        annotate: true
+      }
+    ],
+    require.resolve("babel-plugin-transform-decorators-legacy"),
+    require.resolve("babel-plugin-add-module-exports"),
+    require.resolve("babel-plugin-transform-decorators-legacy")
+  ],
   presets: [
     [
-      require.resolve('babel-preset-env'),
-      {
-        "useBuiltIns": true,
-        'targets': {
-          'browsers': [
-            'last 2 versions',
-          ],
-          'node': 'current',
-        },
-      },
+      require.resolve("babel-preset-flow-runtime"),
+      [
+        require.resolve("babel-preset-env"),
+        {
+          useBuiltIns: true,
+          targets: {
+            browsers: ["last 2 versions"],
+            node: "current"
+          }
+        }
+      ]
     ],
-    require.resolve('babel-preset-react-app'),
-    require.resolve('babel-preset-stage-0'),
+    require.resolve("babel-preset-react-app"),
+    require.resolve("babel-preset-stage-0")
   ]
-}
+};
