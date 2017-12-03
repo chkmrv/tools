@@ -1,6 +1,6 @@
 {
   "name": "@chantelle/eslint-config-chantelle",
-  "version": "0.0.1-5",
+  "version": "0.0.1-6",
   "description": "Chantelle common Eslint rules",
   "main": "./index.js",
   "scripts": {
@@ -15,11 +15,11 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-5",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-6",
     "babel-eslint": "^8.0.3"
   },
   "devDependencies": {
-    "@chantelle/eslint-config-chantelle-commonjs": "^0.0.1-5",
+    "@chantelle/eslint-config-chantelle-commonjs": "^0.0.1-6",
     "eslint": "^4.12.1",
     "eslint-config-cleanjs": "^4.0.0",
     "eslint-config-react-app": "^2.0.1",
@@ -36,7 +36,7 @@
     "prettier": "^1.8.2"
   },
   "peerDependencies": {
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-5",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-6",
     "eslint": "^4.12.1"
   },
   "eslintConfig": {
