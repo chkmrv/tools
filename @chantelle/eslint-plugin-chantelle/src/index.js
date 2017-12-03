@@ -1,3 +1,4 @@
+/* eslint fp/no-mutating-methods:0, fp/no-mutation:0, fp/no-let:0, better/no-new:0, no-console:0, fp/no-unused-expression:0, better/no-ifs:0 */
 import cleanjs from 'eslint-config-cleanjs'
 import pick from 'lodash/pick'
 import merge from 'lodash/merge'
@@ -160,7 +161,7 @@ export const chantelleRules = {
   'space-before-blocks': [2, 'always'],
   // 'template-curly-spacing': [2, 'always'],
   // 'max-len': [1, 80, 2],
-  'max-nested-callbacks': ['error', 1],
+  'max-nested-callbacks': [2, { max: 3 }],
   'no-debugger': 1,
 }
 
@@ -170,7 +171,7 @@ export const getConfigBase = () => ({
   parser: 'babel-eslint',
   extends: ['plugin:flowtype/recommended', 'plugin:react/recommended'],
   plugins: [
-    '@chantelle/chantelle',
+    // '@chantelle/chantelle',
     'babel',
     'flowtype',
     'fp',
@@ -181,6 +182,7 @@ export const getConfigBase = () => ({
     'prettier',
   ],
   env: {
+    es6: true,
     node: true,
     browser: true,
   },

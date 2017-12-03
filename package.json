@@ -3,13 +3,17 @@
   "private": true,
   "description": "Common tools for Groupe Chantelle",
   "scripts": {
-    "reinstall": "npm run clean && npm i",
-    "postinstall": "lerna bootstrap",
+    "postinstall": "npm run bootstrap",
+    "reinstall": "npm run purge && npm i",
+    "bootstrap": "lerna bootstrap",
     "start": "lerna run start --stream --parallel",
-    "test": "lerna run test --stream --parallel",
+    "test": "lerna run test --parallel --stream",
     "build": "lerna run build --stream --parallel",
     "lint": "lerna run lint --stream --parallel",
-    "clean": "lerna clean --yes && rm -rf ./node_modules && rm -rf ./package-lock.json && rm -rf ./**/**/package-lock.json"
+    "exec": "lerna exec --stream --parallel",
+    "lint-watch": "lerna run lint --stream --parallel -- --watch",
+    "purge": "lerna clean --yes && rm -rf ./node_modules && rm -rf ./package-lock.json && rm -rf ./**/**/package-lock.json",
+    "clean": "lerna clean --yes"
   },
   "repository": {
     "type": "git",
@@ -27,7 +31,6 @@
   ],
   "license": "UNLICENSED",
   "dependencies": {
-    "@chantelle/scripts": "^0.0.1-5",
     "lerna": "^2.5.1"
   },
   "devDependencies": {}

@@ -1,5 +1,6 @@
-import { resolve, endsWith, substr, join } from 'path'
-import { debug } from '@chantelle/util'
+/* eslint better/no-ifs:0 */
+import { resolve, substr, join } from 'path'
+// import { debug } from '@chantelle/util'
 import { realpathSync } from 'fs'
 import url from 'url'
 
@@ -13,17 +14,12 @@ const envPublicUrl = process.env.PUBLIC_URL
 
 export const ensureSlash = (path, needsSlash) => {
   const hasSlash = path.endsWith('/')
-  if (hasSlash && !needsSlash) {
-    return substr(path, path.length - 1)
-  } else if (!hasSlash && needsSlash) {
-    return `${path}/`
-  } else {
-    return path
-  }
+  return hasSlash && !needsSlash
+    ? substr(path, path.length - 1)
+    : !hasSlash && needsSlash ? `${path}/` : path
 }
 
-const getPublicUrl = appPackageJson =>
-  envPublicUrl || require(appPackageJson).homepage
+const getPublicUrl = appPackageJson => envPublicUrl || appPackageJson.homepage
 
 // We use `PUBLIC_URL` environment variable or "homepage" field to infer
 // "public path" at which the app is served.
@@ -38,21 +34,13 @@ export const getServedPath = appPackageJson => {
   return ensureSlash(servedUrl, true)
 }
 
-const themesBare = './'
-const themesLingerieBare = join(themesBare, 'lingerie/js/react')
-const themesLiveraBare = join(themesBare, 'livera/js/react')
-
-// config after eject: we're in ./config/
-export const vendor = resolveApp('../../../js')
-export const util = resolveApp('util')
-export const config = resolveApp('config')
 export const dotenv = resolveApp('.env')
 export const appBuild = resolveApp(join('build'))
 export const appPublic = resolveApp(join('public'))
 export const appHtml = resolveApp(join('public', 'index.html'))
-export const appIndexJs = resolveApp(join(themesBare, 'index.js'))
+export const appIndexJs = resolveApp(join('build', 'main.js'))
 export const appPackageJson = resolveApp('package.json')
-export const appSrc = resolveApp(themesBare)
+export const appSrc = resolveApp('src')
 export const yarnLockFile = resolveApp('yarn.lock')
 export const appNodeModules = resolveApp('node_modules')
 export const servedPath = getServedPath(resolveApp('package.json'))

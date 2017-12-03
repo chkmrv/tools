@@ -122,4 +122,4 @@ export const webpackDevServerConfig = (proxy, allowedHost) => {
   )
 }
 
-export default webpackDevServer
+export default webpackDevServerConfig

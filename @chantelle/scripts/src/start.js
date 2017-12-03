@@ -1,3 +1,4 @@
+/* eslint fp/no-mutation:0, better/no-new:0, no-console:0, fp/no-unused-expression:0, better/no-ifs:0 */
 import { env } from '@chantelle/config'
 import fs from 'fs'
 import chalk from 'chalk'
@@ -12,16 +13,12 @@ import {
   prepareUrls,
 } from 'react-dev-utils/WebpackDevServerUtils'
 import openBrowser from 'react-dev-utils/openBrowser'
-import {
-  appPublic,
-  appHtml,
-  appIndexJs,
-  appPackageJson,
-  yarnLockFile,
-} from '@chantelle/config/paths'
+import { paths } from '@chantelle/config'
 import { webpackDevelopmentConfig as config } from '@chantelle/config'
 import { debug, thrower } from '@chantelle/util'
-import createDevServerConfig from '@chantelle/config/src/envdev'
+import { createDevServerConfig } from '@chantelle/config'
+
+const { appPublic, appHtml, appIndexJs, appPackageJson, yarnLockFile } = paths
 
 export const runStart = () => {
   // Do this as the first thing so that any code reading it knows the right env.
@@ -50,10 +47,9 @@ export const runStart = () => {
   // run on a different port. `detect()` Promise resolves to the next free port.
   return choosePort(HOST, DEFAULT_PORT)
     .then(port => {
-      if (port == null) {
+      if (port == null)
         // We have not found a port.
-        return
-      }
+        return false
       const protocol = env.HTTPS === true ? 'https' : 'http'
       const appName = require(appPackageJson).name
       debug('prepareUrls for %O', {
@@ -74,9 +70,6 @@ export const runStart = () => {
         urls.lanUrlForConfig,
       )
 
-      // debug('serverConfig %O', serverConfig)
-      // debug('compiler %O', compiler)
-
       const devServer = new WebpackDevServer(compiler, serverConfig)
 
       // Launch WebpackDevServer.
@@ -87,23 +80,24 @@ export const runStart = () => {
 
         //eslint-disable-next-line no-console
         console.log(chalk.cyan('Starting the development server...\n'))
-        DISABLE_OPEN_BROWSER === true
+        return DISABLE_OPEN_BROWSER === true
           ? //eslint-disable-next-line no-console
             console.info(urls.localUrlForBrowser)
           : openBrowser(urls.localUrlForBrowser)
       })
-      ;['SIGINT', 'SIGTERM'].forEach(sig => {
-        process.on(sig, () => {
-          devServer.close()
-          process.exit()
-        })
-      })
+
+      return devServer
     })
-    .catch(err => {
+    .then(devServer =>
+      ['SIGINT', 'SIGTERM'].forEach(sig =>
+        process.on(sig, () => [devServer.close(), process.exit()]),
+      ),
+    )
+    .catch(err => [
       //eslint-disable-next-line no-console
-      console.error(err)
-      process.exit(1)
-    })
+      console.error(err),
+      process.exit(1),
+    ])
 }
 
 export default runStart

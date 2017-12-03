@@ -1,7 +1,7 @@
 {
-  "name": "@chantelle/eslint-config-chantelle",
+  "name": "@chantelle/eslint-config-chantelle-commonjs",
   "version": "0.0.1-5",
-  "description": "Chantelle common Eslint rules",
+  "description": "Chantelle common Eslint rules for CommonJs",
   "main": "./index.js",
   "scripts": {
     "lint": "eslint ./ --fix",
@@ -19,7 +19,6 @@
     "babel-eslint": "^8.0.3"
   },
   "devDependencies": {
-    "@chantelle/eslint-config-chantelle-commonjs": "^0.0.1-5",
     "eslint": "^4.12.1",
     "eslint-config-cleanjs": "^4.0.0",
     "eslint-config-react-app": "^2.0.1",
@@ -34,15 +33,6 @@
     "husky": "^0.14.3",
     "nodemon": "^1.12.1",
     "prettier": "^1.8.2"
-  },
-  "peerDependencies": {
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-5",
-    "eslint": "^4.12.1"
-  },
-  "eslintConfig": {
-    "extends": [
-      "@chantelle/chantelle-commonjs"
-    ]
   },
   "repository": {
     "type": "git",

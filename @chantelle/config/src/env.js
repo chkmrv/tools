@@ -1,41 +1,26 @@
-/**
- * MIT License
- *
- * Copyright (c) 2017
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-import fs from 'fs'
+/* eslint fp/no-let:0, fp/no-mutation:0, better/no-new:0, no-console:0, fp/no-unused-expression:0, better/no-ifs:0 */
 import path from 'path'
-import paths from './paths'
-import { objectWithBooleansFromStrings } from '@chantelle/util'
+import dotenv from 'dotenv'
+import * as paths from './paths'
+import { existsSync, realpathSync } from 'fs'
+import {
+  thrower,
+  objectWithBooleansFromStrings,
+  setEnvironmentVariable,
+  getEnvironmentVariable,
+} from '@chantelle/util'
 
-const prepare = () => {
+export const getClientEnvironment = publicUrl => {
   // Make sure that including paths.js after env.js will read .env variables.
-  delete require.cache[require.resolve('./paths')]
+  delete require.cache[require.resolve('./paths')] // eslint-disable-line
 
-  const NODE_ENV = process.env.NODE_ENV
-  if (!NODE_ENV) {
-    throw new Error(
-      'The NODE_ENV environment variable is required but was not specified.',
+  const NODE_ENV = getEnvironmentVariable('NODE_ENV')
+  if (!NODE_ENV)
+    thrower(
+      Error(
+        'The NODE_ENV environment variable is required but was not specified.',
+      ),
     )
-  }
 
   // https://github.com/bkeepers/dotenv#what-other-env-files-can-i-use
   let dotenvFiles = [
@@ -52,13 +37,14 @@ const prepare = () => {
   // if this file is missing. dotenv will never modify any environment variables
   // that have already been set.
   // https://github.com/motdotla/dotenv
-  dotenvFiles.forEach(dotenvFile => {
-    if (fs.existsSync(dotenvFile)) {
-      require('dotenv').config({
-        path: dotenvFile,
-      })
-    }
-  })
+  dotenvFiles.forEach(
+    dotenvFile =>
+      existsSync(dotenvFile)
+        ? dotenv.config({
+            path: dotenvFile,
+          })
+        : {},
+  )
 
   // We support resolving modules according to `NODE_PATH`.
   // This lets you use absolute paths in imports inside large monorepos:
@@ -69,35 +55,32 @@ const prepare = () => {
   // Otherwise, we risk importing Node.js core modules into an app instead of Webpack shims.
   // https://github.com/facebookincubator/create-react-app/issues/1023#issuecomment-265344421
   // We also resolve them to make sure all tools using them work consistently.
-  const appDirectory = fs.realpathSync(process.cwd())
-  process.env.NODE_PATH = (process.env.NODE_PATH || '')
-    .split(path.delimiter)
-    .filter(folder => folder && !path.isAbsolute(folder))
-    .map(folder => path.resolve(appDirectory, folder))
-    .join(path.delimiter)
+  const appDirectory = realpathSync(process.cwd())
+  setEnvironmentVariable(
+    'NODE_PATH',
+    (getEnvironmentVariable('NODE_PATH') || '')
+      .split(path.delimiter)
+      .filter(folder => folder && !path.isAbsolute(folder))
+      .map(folder => path.resolve(appDirectory, folder))
+      .join(path.delimiter),
+  )
 
   // Grab NODE_ENV and REACT_APP_* environment variables and prepare them to be
   // injected into the application via DefinePlugin in Webpack configuration.
   // const REACT_APP = /^REACT_APP_/i;
 
-  return { appDirectory, dotenvFiles }
-}
-
-export function getClientEnvironment(publicUrl) {
-  const { appDirectory, dotenvFiles } = prepare()
-
   const raw = objectWithBooleansFromStrings(
     Object.keys(process.env)
       // .filter(key => REACT_APP.test(key))
       .reduce(
-        (env, key) => {
-          env[key] = process.env[key]
-          return env
-        },
+        (env, key) => ({
+          ...env,
+          [key]: process.env[key],
+        }),
         {
           // Useful for determining whether we’re running in production mode.
           // Most importantly, it switches React into the correct mode.
-          NODE_ENV: process.env.NODE_ENV || 'development',
+          NODE_ENV: getEnvironmentVariable('NODE_ENV') || 'development',
           // Useful for resolving the correct path to static assets in `public`.
           // For example, <img src={process.env.PUBLIC_URL + '/img/logo.png'} />.
           // This should only be used as an escape hatch. Normally you would put
@@ -108,13 +91,14 @@ export function getClientEnvironment(publicUrl) {
   )
   // Stringify all values so we can feed into Webpack DefinePlugin
   const stringified = {
-    'process.env': Object.keys(raw).reduce((env, key) => {
-      env[key] = JSON.stringify(raw[key])
-      return env
-    }, {}),
+    'process.env': Object.keys(raw).reduce(
+      (env, key) => ({
+        ...env,
+        [key]: JSON.stringify(raw[key]),
+      }),
+      {},
+    ),
   }
 
   return { raw, stringified }
 }
-
-export default getClientEnvironment

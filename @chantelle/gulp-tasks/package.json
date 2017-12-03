@@ -1,18 +1,14 @@
 {
   "name": "@chantelle/gulp-tasks",
-  "main": "./build/main.js",
   "version": "0.0.1-5",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@bitbucket.org:editionlingerie/chantelle-tools.git"
-  },
+  "main": "./build/main.js",
   "dependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.0.1-5",
     "@chantelle/config": "^0.0.1-5",
     "@chantelle/scripts": "^0.0.1-5",
     "@chantelle/util": "^0.0.1-5",
-    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
     "babel-register": "^6.26.0",
+    "flow-runtime": "^0.16.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-env": "^0.4.0",
     "gulp-eslint": "^4.0.0",
@@ -24,14 +20,31 @@
     "gulp-util": "^3.0.8"
   },
   "devDependencies": {
+    "@chantelle/babel-preset-chantelle": "^0.0.1-5",
     "@chantelle/eslint-config-chantelle": "^0.0.1-5",
     "@chantelle/eslint-plugin-chantelle": "^0.0.1-5",
+    "ava": "^0.24.0",
+    "babel-core": "^6.26.0",
+    "babel-register": "^6.26.0",
     "backpack-core": "^0.4.3",
-    "eslint": "^4.11.0",
+    "eslint": "^4.12.1",
+    "eslint-config-cleanjs": "^4.0.0",
+    "eslint-config-react-app": "^2.0.1",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-better": "^0.1.5",
+    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.5.1",
     "husky": "^0.14.3",
     "nodemon": "^1.12.1",
+    "npm": "^5.5.1",
     "prettier": "^1.8.2"
+  },
+  "peerDependencies": {
+    "gulp": "github:gulpjs/gulp#4.0"
   },
   "babel": {
     "presets": [
@@ -39,11 +52,14 @@
     ]
   },
   "scripts": {
-    "precommit": "npm explore @chantelle/scripts -- npm run precommit",
-    "lint": "eslint ./src --fix",
+    "test": "ava",
+    "pretest": "npm run build",
     "start": "nodemon --ignore \"build\" --exec \"npm run build\"",
+    "lint": "eslint ./src --fix",
     "build": "backpack build",
-    "prepublish": "npm run build"
+    "prepublish": "echo \"noop\"",
+    "prepare": "echo \"noop\"",
+    "precommit": "npm run lint && npm test"
   },
   "eslintConfig": {
     "extends": [
@@ -52,5 +68,9 @@
     "rules": {
       "fp/no-unused-expression": 0
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:GroupeChantelle/tools.git"
   }
 }

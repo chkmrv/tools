@@ -1,27 +1,32 @@
-import { getClientEnvironment } from '@chantelle/config'
+/* eslint fp/no-mutating-methods:0, better/no-new:0, no-console:0, fp/no-unused-expression:0, better/no-ifs:0 */
 import jest from 'jest'
+import { getClientEnvironment } from '@chantelle/config'
+import {
+  thrower,
+  getEnvironmentVariable,
+  extendEnvironmentVariables,
+} from '@chantelle/util'
 
 export const runTest = () => {
-  const env = getClientEnvironment()
+  getClientEnvironment()
 
   // Do this as the first thing so that any code reading it knows the right env.
-  process.env.BABEL_ENV = 'test'
-  process.env.NODE_ENV = 'test'
-  process.env.PUBLIC_URL = ''
+  extendEnvironmentVariables({
+    BABEL_ENV: 'test',
+    NODE_ENV: 'test',
+    PUBLIC_URL: '',
+  })
 
   // Makes the script crash on unhandled rejections instead of silently
   // ignoring them. In the future, promise rejections that are not handled will
   // terminate the Node.js process with a non-zero exit code.
-  process.on('unhandledRejection', err => {
-    throw err
-  })
+  process.on('unhandledRejection', thrower)
 
   const argv = process.argv.slice(2)
 
   // Watch unless on CI or in coverage mode
-  if (!process.env.CI && argv.indexOf('--coverage') < 0) {
+  if (!getEnvironmentVariable('CI') && argv.indexOf('--coverage') < 0)
     argv.push('--watch')
-  }
 
   return jest.run(argv)
 }

@@ -1,5 +1,6 @@
+/* eslint better/no-new:0, no-console:0, fp/no-unused-expression:0, better/no-ifs:0 */
 import autoprefixer from 'autoprefixer'
-import { resolve, dirname, delimiter } from 'path'
+import { resolve, delimiter } from 'path'
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
@@ -15,15 +16,6 @@ import {
   appNodeModules,
   appIndexJs,
   appHtml,
-  lingerieCommon,
-  lingerieCategory,
-  lingerieProduct,
-  lingeriePage,
-  liveraCheckout,
-  liveraMyAccount,
-  liveraPage,
-  liveraCart,
-  liveraStoreLocator,
 } from './paths'
 import { debug } from '@chantelle/util'
 
@@ -74,17 +66,7 @@ export const webpackDevelopmentConfig = () => {
     // These are the "entry points" to our application.
     // This means they will be the "root" imports that are included in JS bundle.
     // The first two entry points enable "hot" CSS and auto-refreshes for JS.
-    entry: {
-      lingerieCommon: [...defaultEntry, lingerieCommon],
-      lingerieCategory: [...defaultEntry, lingerieCategory],
-      lingerieProduct: [...defaultEntry, lingerieProduct],
-      lingeriePage: [...defaultEntry, lingeriePage],
-      liveraPage: [...defaultEntry, liveraPage],
-      liveraCheckout: [...defaultEntry, liveraCheckout],
-      liveraMyAccount: [...defaultEntry, liveraMyAccount],
-      liveraStoreLocator: [...defaultEntry, liveraStoreLocator],
-      liveraCart: [...defaultEntry, liveraCart],
-    },
+    entry: defaultEntry,
     output: {
       // Next line is not used in dev but WebpackDevServer crashes without it:
       path: appBuild,
@@ -154,7 +136,8 @@ export const webpackDevelopmentConfig = () => {
             },
           ],
           include: appSrc,
-          exclude: [appNodeModules, lingerieCommon],
+          // exclude: [appNodeModules, lingerieCommon],
+          exclude: [appNodeModules],
         },
         {
           // "oneOf" will traverse all following loaders until one will

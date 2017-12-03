@@ -12,24 +12,22 @@ module.exports = {
       }
     ],
     require.resolve("babel-plugin-transform-decorators-legacy"),
-    require.resolve("babel-plugin-add-module-exports"),
-    require.resolve("babel-plugin-transform-decorators-legacy")
+    require.resolve("babel-plugin-add-module-exports")
   ],
   presets: [
-    [
-      require.resolve("babel-preset-flow-runtime"),
-      [
-        require.resolve("babel-preset-env"),
-        {
-          useBuiltIns: true,
-          targets: {
-            browsers: ["last 2 versions"],
-            node: "current"
-          }
-        }
-      ]
-    ],
+    require.resolve("babel-preset-flow-runtime"),
+    require.resolve("babel-preset-stage-2"),
+    require.resolve("babel-preset-react"),
     require.resolve("babel-preset-react-app"),
-    require.resolve("babel-preset-stage-0")
+    [
+      require.resolve("babel-preset-env"),
+      {
+        useBuiltIns: true,
+        targets: {
+          browsers: ["last 2 versions"],
+          node: "current"
+        }
+      }
+    ]
   ]
 };

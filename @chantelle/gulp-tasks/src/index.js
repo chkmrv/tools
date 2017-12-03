@@ -1,8 +1,8 @@
 import { join } from 'path'
 import gulpLoadPlugins from 'gulp-load-plugins'
-import paths from '@chantelle/config'
+import { paths } from '@chantelle/config'
 
-export default gulp => {
+export const tasks = gulp => {
   const { config, util, vendor, appDirectory } = paths
   const { shell, eslint, lebab, print, util: { log } } = gulpLoadPlugins()
 
@@ -85,3 +85,5 @@ export default gulp => {
 
   return gulp
 }
+
+export default tasks

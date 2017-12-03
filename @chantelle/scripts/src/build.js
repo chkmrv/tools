@@ -1,9 +1,19 @@
+/* eslint fp/no-mutation:0, better/no-new:0, no-console:0, fp/no-unused-expression:0, better/no-ifs:0 */
 import path from 'path'
 import chalk from 'chalk'
 import fs from 'fs-extra'
 import webpack from 'webpack'
-import config from '@chantelle/config/webpackProduction'
-import {
+import config from '@chantelle/config/getWebpackProduction'
+import { paths } from '@chantelle/config'
+import debugFactory from 'debug'
+import checkRequiredFiles from 'react-dev-utils/checkRequiredFiles'
+import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages'
+import printHostingInstructions from 'react-dev-utils/printHostingInstructions'
+import FileSizeReporter from 'react-dev-utils/FileSizeReporter'
+import printBuildError from 'react-dev-utils/printBuildError'
+import { extendEnvironmentVariables, thrower } from '@chantelle/util'
+
+const {
   yarnLockFile,
   appHtml,
   appIndexJs,
@@ -11,34 +21,23 @@ import {
   appPackageJson,
   appBuild,
   appPublic,
-} from '@chantelle/config/paths'
-import debugFactory from 'debug'
-import checkRequiredFiles from 'react-dev-utils/checkRequiredFiles'
-import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages'
-import printHostingInstructions from 'react-dev-utils/printHostingInstructions'
-import FileSizeReporter from 'react-dev-utils/FileSizeReporter'
-import printBuildError from 'react-dev-utils/printBuildError'
-import { processEnv, thrower } from '@chantelle/util'
+} = paths
 
 // Create the production build and print the deployment instructions.
 function build(previousFileSizes) {
   //eslint-disable-next-line no-console
   console.log('Creating an optimized production build...')
 
-  let compiler = webpack(config)
-  return new Promise((resolve, reject) => {
+  const compiler = webpack(config)
+  return new Promise((resolve, reject) =>
     compiler.run((err, stats) => {
-      if (err) {
-        return reject(err)
-      }
+      if (err) return reject(err)
       const messages = formatWebpackMessages(stats.toJson({}, true))
       if (messages.errors.length) {
         // Only keep the first error. Others are often indicative
         // of the same problem, but confuse the reader with noise.
-        if (messages.errors.length > 1) {
-          messages.errors.length = 1
-        }
-        return reject(new Error(messages.errors.join('\n\n')))
+        if (messages.errors.length > 1) messages.errors.length = 1
+        return reject(Error(messages.errors.join('\n\n')))
       }
       if (
         process.env.CI &&
@@ -60,8 +59,8 @@ function build(previousFileSizes) {
         previousFileSizes,
         warnings: messages.warnings,
       })
-    })
-  })
+    }),
+  )
 }
 
 function copyPublicFolder() {
@@ -75,7 +74,7 @@ export const runBuild = () => {
   const debug = debugFactory('webpack-build')
 
   // Do this as the first thing so that any code reading it knows the right env.
-  processEnv({
+  extendEnvironmentVariables({
     BABEL_ENV: 'production',
     NODE_ENV: 'production',
   })
@@ -86,7 +85,7 @@ export const runBuild = () => {
   process.on('unhandledRejection', thrower)
 
   // Ensure environment variables are read.
-  require('@chantelle/config/env')
+  require('@chantelle/config')
 
   const measureFileSizesBeforeBuild =
     FileSizeReporter.measureFileSizesBeforeBuild
@@ -102,7 +101,7 @@ export const runBuild = () => {
     process.exit(1)
   }
 
-  debug('starting')
+  debug('build starting')
 
   // First, read the current file sizes in build directory.
   // This lets us display how much they changed later.
@@ -160,14 +159,20 @@ export const runBuild = () => {
           buildFolder,
           useYarn,
         )
+
+        return {
+          appPackage,
+          publicUrl,
+          publicPath,
+          buildFolder,
+          useYarn,
+        }
       },
-      err => {
+      err => [
         //eslint-disable-next-line no-console
-        console.error(chalk.red('Failed to compile.\n'))
-        printBuildError(err)
-        process.exit(1)
-      },
+        console.error(chalk.red('Failed to compile.\n')),
+        printBuildError(err),
+        process.exit(1),
+      ],
     )
 }
-
-export default runBuild

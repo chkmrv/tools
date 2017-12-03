@@ -1,4 +1,4 @@
-/* eslint fp/no-unused-expression:0, better/no-ifs:0, fp/no-nil:0, better/explicit-return:0, import/no-commonjs:0 */
+/* eslint fp/no-mutation:0, fp/no-unused-expression:0, better/no-ifs:0, fp/no-nil:0, better/explicit-return:0, import/no-commonjs:0 */
 
 window.jQuery = require('jquery')
 

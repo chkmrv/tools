@@ -1,8 +1,8 @@
 // @flow
 import debugFactoryWithName from '@nod/debug-with-package-name'
 
-export const createNumberSequence = (number: number): Array<*> => [
-  ...Array(number).keys(),
+export const createNumberSequence = (length: number): Array<*> => [
+  ...Array(length).keys(),
 ]
 
 export const random = (max: number = 9999, min: number = 1): number =>
@@ -69,9 +69,6 @@ export const debugFactory = (additionalPrefix: ?string = ' %O'): Function =>
 export const debug = (variable: ?any, description: ?string = ' %O'): any =>
   pipe([variable => debugFactory()(description, variable)])(variable)
 
-export const processEnv = (newEnv: Object): Object =>
-  (process.env = { ...process.env, ...newEnv }) // eslint-disable-line fp/no-mutation
-
 export const arrayToObjectEntries = (
   entry: Array,
   formatter: Function = (value: any, key: string | number) => ({
@@ -85,3 +82,45 @@ export const arrayToObjectEntries = (
     }),
     formatter(entry[0], 0),
   )
+
+export const objectFilterKeys = (object: Object, filter: Function): Object =>
+  Object.keys(object)
+    .filter(filter)
+    .reduce(
+      (object, key) => ({
+        ...object,
+        [key]: object[key],
+      }),
+      {},
+    )
+
+export const getEnvironment = (): Object => process.env
+
+export const getEnvironmentVariable = (
+  key: string,
+  environment: Object = getEnvironment(),
+): any => environment[key]
+
+export const setEnvironmentVariable = (
+  key: string,
+  value?: any,
+  environment: Object = getEnvironment(),
+): Object =>
+  //eslint-disable-next-line fp/no-mutation
+  (process.env = {
+    ...environment,
+    [key]: value,
+  })
+
+export const setMultipleEnvironmentVariables = (
+  variables: Object,
+  environment: Object = getEnvironment(),
+): Object => ({
+  ...environment,
+  ...variables,
+})
+
+export const dropEnvironmentVariable = (
+  keyToDrop: string,
+  environment: Object = getEnvironment(),
+): Object => objectFilterKeys(environment, key => keyToDrop !== key)

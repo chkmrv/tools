@@ -1,4 +1,4 @@
-import gulp from 'gulp'
+import gulpCore from 'gulp'
 import tasks from '@chantelle/gulp-tasks'
 
-export default tasks(gulp)
+export const gulp = tasks(gulpCore)

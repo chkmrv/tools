@@ -1,6 +1,4 @@
 import gulp from 'gulp'
-import shell from 'shelljs'
-import { resolve } from 'path'
 import { thrower } from '@chantelle/util'
 import '../gulpfile.babel'
 
