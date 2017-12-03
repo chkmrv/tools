@@ -13,7 +13,8 @@
     "exec": "lerna exec --stream --parallel",
     "lint-watch": "lerna run lint --stream --parallel -- --watch",
     "purge": "lerna clean --yes && rm -rf ./node_modules && rm -rf ./package-lock.json && rm -rf ./**/**/package-lock.json",
-    "clean": "lerna clean --yes"
+    "clean": "lerna clean --yes",
+    "publish": "lerna publish"
   },
   "repository": {
     "type": "git",
