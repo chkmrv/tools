@@ -1,6 +1,6 @@
 {
   "name": "@chantelle/babel-preset-chantelle",
-  "version": "0.0.1-8",
+  "version": "0.0.1-9",
   "description": "Common Babel preset for Groupe Chantelle",
   "main": "./index.js",
   "scripts": {
@@ -25,7 +25,7 @@
   "license": "MIT",
   "homepage": "https://bitbucket.org/editionlingerie/chantelle-babel-preset-chantelle#readme",
   "dependencies": {
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-8",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-9",
     "babel-eslint": "^8.0.3",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-flow-runtime": "^0.11.1",
