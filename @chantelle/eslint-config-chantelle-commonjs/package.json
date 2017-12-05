@@ -1,6 +1,6 @@
 {
   "name": "@chantelle/eslint-config-chantelle-commonjs",
-  "version": "0.0.1-9",
+  "version": "0.0.1-10",
   "description": "Chantelle common Eslint rules for CommonJs",
   "main": "./index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-9",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-10",
     "babel-eslint": "^8.0.3"
   },
   "devDependencies": {
@@ -34,7 +34,9 @@
     "nodemon": "^1.12.1",
     "prettier": "^1.8.2"
   },
-  "eslintIgnore": ["node_modules"],
+  "eslintIgnore": [
+    "node_modules"
+  ],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:GroupeChantelle/tools.git"

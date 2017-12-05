@@ -1,17 +1,18 @@
 {
   "name": "@chantelle/eslint-plugin-chantelle",
   "main": "./build/main.js",
-  "version": "0.0.1-9",
+  "version": "0.0.1-10",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org:editionlingerie/chantelle-tools.git"
   },
   "dependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.0.1-9",
-    "@chantelle/util": "^0.0.1-9",
+    "@chantelle/babel-preset-chantelle": "^0.0.1-10",
+    "@chantelle/util": "^0.0.1-10",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
     "eslint-config-cleanjs": "^4.0.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-config-react-app": "^2.0.1",
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-better": "^0.1.5",
@@ -20,7 +21,6 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-prettier": "^2.3.1",
-    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-react": "^7.5.1",
     "flow-runtime": "^0.16.0",
     "lodash": "^4.17.4"
