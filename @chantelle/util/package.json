@@ -48,7 +48,7 @@
     "start": "nodemon --ignore \"build\" --exec \"npm run build\"",
     "build": "backpack build",
     "test": "ava",
-    "prepublish": "flow-typed install",
+    "prepublish": "echo \"noop\"",
     "prepare": "echo \"noop\"",
     "precommit": "npm run lint && npm test",
     "postinstall": "flow-typed install"
