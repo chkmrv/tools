@@ -5,13 +5,12 @@ import fs from 'fs-extra'
 import webpack from 'webpack'
 import config from '@chantelle/config/getWebpackProduction'
 import { paths } from '@chantelle/config'
-import debugFactory from 'debug'
 import checkRequiredFiles from 'react-dev-utils/checkRequiredFiles'
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages'
 import printHostingInstructions from 'react-dev-utils/printHostingInstructions'
 import FileSizeReporter from 'react-dev-utils/FileSizeReporter'
 import printBuildError from 'react-dev-utils/printBuildError'
-import { extendEnvironmentVariables, thrower } from '@chantelle/util'
+import { debug, extendEnvironmentVariables, thrower } from '@chantelle/util'
 
 const {
   yarnLockFile,
@@ -71,8 +70,6 @@ function copyPublicFolder() {
 }
 
 export const runBuild = () => {
-  const debug = debugFactory('webpack-build')
-
   // Do this as the first thing so that any code reading it knows the right env.
   extendEnvironmentVariables({
     BABEL_ENV: 'production',

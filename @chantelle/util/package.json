@@ -10,6 +10,7 @@
     "flow-runtime": "^0.16.0"
   },
   "devDependencies": {
+    "ava": "^0.24.0",
     "@chantelle/babel-preset-chantelle": "^0.0.1-7",
     "@chantelle/eslint-config-chantelle": "^0.0.1-7",
     "@chantelle/eslint-plugin-chantelle": "^0.0.1-7",
@@ -45,7 +46,7 @@
     "lint": "eslint ./src --fix",
     "start": "nodemon --ignore \"build\" --exec \"npm run build\"",
     "build": "backpack build",
-    "test": "echo \"noop\"",
+    "test": "ava",
     "prepublish": "echo \"noop\"",
     "prepare": "echo \"noop\"",
     "precommit": "npm run lint && npm test"

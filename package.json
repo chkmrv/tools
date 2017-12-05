@@ -14,7 +14,8 @@
     "lint-watch": "lerna run lint --stream --parallel -- --watch",
     "purge": "lerna clean --yes && rm -rf ./node_modules && rm -rf ./package-lock.json && rm -rf ./**/**/package-lock.json",
     "clean": "lerna clean --yes",
-    "publish": "lerna publish"
+    "publish": "lerna publish",
+    "precommit": "npm run lint && npm test"
   },
   "repository": {
     "type": "git",
@@ -30,9 +31,11 @@
     "bundle",
     "gulp"
   ],
-  "license": "UNLICENSED",
+  "license": "MIT",
   "dependencies": {
     "lerna": "^2.5.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "husky": "^0.14.3"
+  }
 }

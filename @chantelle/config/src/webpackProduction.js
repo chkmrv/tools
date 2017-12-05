@@ -401,8 +401,6 @@ export const webpackProductionConfig = () => {
     },
   }
 
-  console.log({ config })
-
   return debug(config, 'webpackProductionConfig %O')
 }
 
