@@ -70,7 +70,7 @@ export const debug = (variable: ?any, description: ?string = ' %O'): any =>
   pipe([variable => debugFactory()(description, variable)])(variable)
 
 export const arrayToObjectEntries = (
-  entry: Array,
+  entry: Array<*>,
   formatter: Function = (value: any, key: string | number) => ({
     [key]: value,
   }),
@@ -93,34 +93,3 @@ export const objectFilterKeys = (object: Object, filter: Function): Object =>
       }),
       {},
     )
-
-export const getEnvironment = (): Object => process.env
-
-export const getEnvironmentVariable = (
-  key: string,
-  environment: Object = getEnvironment(),
-): any => environment[key]
-
-export const setEnvironmentVariable = (
-  key: string,
-  value?: any,
-  environment: Object = getEnvironment(),
-): Object =>
-  //eslint-disable-next-line fp/no-mutation
-  (process.env = {
-    ...environment,
-    [key]: value,
-  })
-
-export const setMultipleEnvironmentVariables = (
-  variables: Object,
-  environment: Object = getEnvironment(),
-): Object => ({
-  ...environment,
-  ...variables,
-})
-
-export const dropEnvironmentVariable = (
-  keyToDrop: string,
-  environment: Object = getEnvironment(),
-): Object => objectFilterKeys(environment, key => keyToDrop !== key)

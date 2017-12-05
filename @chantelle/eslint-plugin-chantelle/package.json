@@ -20,6 +20,7 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-prettier": "^2.3.1",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-react": "^7.5.1",
     "flow-runtime": "^0.16.0",
     "lodash": "^4.17.4"
@@ -47,6 +48,9 @@
     "prepare": "echo \"noop\"",
     "precommit": "npm run lint && npm test"
   },
+  "eslintIgnore": [
+    "node_modules"
+  ],
   "babel": {
     "presets": [
       "@chantelle/chantelle"

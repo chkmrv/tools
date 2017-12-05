@@ -16,10 +16,6 @@ import {
   debug,
   arrayToObjectEntries,
   objectFilterKeys,
-  getEnvironment,
-  setEnvironmentVariable,
-  setMultipleEnvironmentVariables,
-  dropEnvironmentVariable,
 } from './'
 
 test('exports correct types', t =>
@@ -38,8 +34,4 @@ test('exports correct types', t =>
     [debug, 'function'],
     [arrayToObjectEntries, 'function'],
     [objectFilterKeys, 'function'],
-    [getEnvironment, 'function'],
-    [setEnvironmentVariable, 'function'],
-    [setMultipleEnvironmentVariables, 'function'],
-    [dropEnvironmentVariable, 'function'],
   ].map(([exported, type]) => t.is(typeof exported, type)))

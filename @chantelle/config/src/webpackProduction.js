@@ -19,15 +19,13 @@ import {
   appHtml,
   servedPath,
 } from './paths'
-import {
-  thrower,
-  debug,
-  setEnvironmentVariable,
-  getEnvironmentVariable,
-} from '@chantelle/util'
+import { thrower, debug } from '@chantelle/util'
+
+const { GENERATE_SOURCEMAP } = process.env
 
 export const webpackProductionConfig = () => {
-  setEnvironmentVariable('NODE_ENV', 'production')
+  //eslint-disable-next-line fp/no-mutation
+  process.env = { ...process.env, NODE_ENV: 'production' }
 
   debug('configuring production')
 
@@ -38,8 +36,7 @@ export const webpackProductionConfig = () => {
   // For these, "homepage" can be set to "." to enable relative asset
   const shouldUseRelativeAssetPaths = publicPath === './'
   // Source maps are resource heavy and can cause out of memory issue for large source files.
-  const shouldUseSourceMap =
-    getEnvironmentVariable('GENERATE_SOURCEMAP') !== false
+  const shouldUseSourceMap = GENERATE_SOURCEMAP !== false
   // `publicUrl` is just like `publicPath`, but we will provide it to our app
   // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
   // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
@@ -51,10 +48,8 @@ export const webpackProductionConfig = () => {
 
   // Assert this just to be safe.
   // Development builds of React are slow and not intended for production.
-  if (
-    getEnvironmentVariable('NODE_ENV', stringifiedEnv['process.env']) !==
-    '"production"'
-  )
+  const { NODE_ENV: stringEnv } = stringifiedEnv['process.env']
+  if (stringEnv !== '"production"')
     thrower(Error('Production builds must have NODE_ENV=production.'))
 
   // Note: defined here because it will be used more than once.
@@ -75,6 +70,8 @@ export const webpackProductionConfig = () => {
   // The development configuration is different and lives in a separate file.
 
   const defaultEntry = [require.resolve('./polyfills'), appIndexJs]
+
+  const { NODE_PATH } = process.env
 
   const config = {
     // Don't attempt to continue if there are any errors.
@@ -106,9 +103,7 @@ export const webpackProductionConfig = () => {
       // https://github.com/facebookincubator/create-react-app/issues/253
       modules: ['node_modules', appNodeModules].concat(
         // It is guaranteed to exist because we tweak it in `env.js`
-        getEnvironmentVariable('NODE_PATH')
-          .split(delimiter)
-          .filter(Boolean),
+        NODE_PATH.split(delimiter).filter(Boolean),
       ),
       // These are the reasonable defaults supported by the Node ecosystem.
       // We also include JSX as a common component filename extension to support

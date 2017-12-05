@@ -8,7 +8,7 @@ import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin'
 import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin'
 import eslintFormatter from 'react-dev-utils/eslintFormatter'
 import ModuleScopePlugin from 'react-dev-utils/ModuleScopePlugin'
-import { getEnvironmentVariable, getClientEnvironment } from './env'
+import { getClientEnvironment } from './env'
 import {
   appSrc,
   appPackageJson,
@@ -19,9 +19,10 @@ import {
 } from './paths'
 import { debug } from '@chantelle/util'
 
+const { GENERATE_SOURCEMAP } = process.env
+
 export const webpackDevelopmentConfig = () => {
-  const shouldUseSourceMap =
-    getEnvironmentVariable('GENERATE_SOURCEMAP') !== false
+  const shouldUseSourceMap = GENERATE_SOURCEMAP !== false
 
   // Webpack uses `publicPath` to determine where the app is being served from.
   // In development, we always serve from the root. This makes config easier.

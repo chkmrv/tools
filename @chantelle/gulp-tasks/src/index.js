@@ -1,3 +1,5 @@
+/* eslint fp/no-unused-expression:0 */
+
 import { join } from 'path'
 import gulpLoadPlugins from 'gulp-load-plugins'
 import { paths } from '@chantelle/config'

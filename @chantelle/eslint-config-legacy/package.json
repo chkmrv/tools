@@ -49,6 +49,7 @@
       "@chantelle/chantelle-commonjs"
     ]
   },
+  "eslintIgnore": ["node_modules"],
   "babel": {
     "presets": [
       "@chantelle/chantelle"

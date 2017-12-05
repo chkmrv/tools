@@ -14,7 +14,6 @@
     "precommit": "npm run lint && npm test"
   },
   "dependencies": {
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-9",
     "@chantelle/scripts": "^0.0.1-9",
     "@chantelle/util": "^0.0.1-9",
     "autoprefixer": "^7.1.6",
@@ -49,6 +48,7 @@
       "@chantelle/chantelle"
     ]
   },
+  "eslintIgnore": ["node_modules", "./get*.js"],
   "devDependencies": {
     "@chantelle/babel-preset-chantelle": "^0.0.1-9",
     "@chantelle/eslint-config-chantelle": "^0.0.1-9",
@@ -71,7 +71,6 @@
     "husky": "^0.14.3",
     "jquery": "^3.2.1",
     "nodemon": "^1.12.1",
-    "npm": "^5.5.1",
     "object-assign": "^4.1.1",
     "prettier": "^1.8.2",
     "promise": "^8.0.1",

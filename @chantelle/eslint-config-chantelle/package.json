@@ -44,6 +44,9 @@
       "@chantelle/chantelle-commonjs"
     ]
   },
+  "eslintIgnore": [
+    "node_modules"
+  ],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:GroupeChantelle/tools.git"

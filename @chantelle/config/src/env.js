@@ -3,18 +3,14 @@ import path from 'path'
 import dotenv from 'dotenv'
 import * as paths from './paths'
 import { existsSync, realpathSync } from 'fs'
-import {
-  thrower,
-  objectWithBooleansFromStrings,
-  setEnvironmentVariable,
-  getEnvironmentVariable,
-} from '@chantelle/util'
+import { thrower, objectWithBooleansFromStrings } from '@chantelle/util'
 
 export const getClientEnvironment = publicUrl => {
   // Make sure that including paths.js after env.js will read .env variables.
   delete require.cache[require.resolve('./paths')] // eslint-disable-line
 
-  const NODE_ENV = getEnvironmentVariable('NODE_ENV')
+  const { NODE_ENV, NODE_PATH } = process.env
+
   if (!NODE_ENV)
     thrower(
       Error(
@@ -56,14 +52,14 @@ export const getClientEnvironment = publicUrl => {
   // https://github.com/facebookincubator/create-react-app/issues/1023#issuecomment-265344421
   // We also resolve them to make sure all tools using them work consistently.
   const appDirectory = realpathSync(process.cwd())
-  setEnvironmentVariable(
-    'NODE_PATH',
-    (getEnvironmentVariable('NODE_PATH') || '')
+  process.env = {
+    ...process.env,
+    NODE_PATH: (NODE_PATH || '')
       .split(path.delimiter)
       .filter(folder => folder && !path.isAbsolute(folder))
       .map(folder => path.resolve(appDirectory, folder))
       .join(path.delimiter),
-  )
+  }
 
   // Grab NODE_ENV and REACT_APP_* environment variables and prepare them to be
   // injected into the application via DefinePlugin in Webpack configuration.
@@ -80,7 +76,7 @@ export const getClientEnvironment = publicUrl => {
         {
           // Useful for determining whether we’re running in production mode.
           // Most importantly, it switches React into the correct mode.
-          NODE_ENV: getEnvironmentVariable('NODE_ENV') || 'development',
+          NODE_ENV: NODE_ENV || 'development',
           // Useful for resolving the correct path to static assets in `public`.
           // For example, <img src={process.env.PUBLIC_URL + '/img/logo.png'} />.
           // This should only be used as an escape hatch. Normally you would put
