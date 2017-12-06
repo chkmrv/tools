@@ -33,6 +33,8 @@ export const chantelleRules = {
 
   //react
   'react/no-unused-prop-types': 1,
+  'react/jsx-uses-vars': 1,
+  'react/jsx-uses-react': 1,
 
   //babel
   'babel/object-curly-spacing': [1, 'always'],

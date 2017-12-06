@@ -50,8 +50,7 @@
     "test": "ava",
     "prepublish": "echo \"noop\"",
     "prepare": "echo \"noop\"",
-    "precommit": "npm run lint && npm test",
-    "postinstall": "flow-typed install"
+    "precommit": "npm run lint && npm test && flow-typed install"
   },
   "license": "MIT",
   "repository": {
