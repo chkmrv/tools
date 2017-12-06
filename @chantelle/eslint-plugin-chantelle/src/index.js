@@ -103,9 +103,10 @@ export const propsToPick = ['env', 'parserOptions', 'root', 'settings']
 
 export const getConfigBase = () => ({
   parser: 'babel-eslint',
-  extends: ['plugin:flowtype/recommended'],
+  extends: ['plugin:flowtype/recommended', 'plugin:jest/recommended'],
   plugins: [
     // '@chantelle/chantelle',
+    'jest',
     'babel',
     'flowtype',
     'fp',
@@ -119,6 +120,7 @@ export const getConfigBase = () => ({
     es6: true,
     node: true,
     browser: true,
+    'jest/globals': true,
   },
   parserOptions: {
     ecmaVersion: 7,
