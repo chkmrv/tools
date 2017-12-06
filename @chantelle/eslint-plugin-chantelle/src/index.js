@@ -76,7 +76,7 @@ export const chantelleRules = {
   'no-unused-vars': [1, { varsIgnorePattern: 'React', args: 'none' }],
   'no-use-before-define': 0,
   'no-useless-escape': 2,
-  'new-cap': [2, { capIsNewExceptions: ['mongoose.Schema'] }],
+  'new-cap': 0,
   'object-curly-spacing': [1, 'always'],
   'object-shorthand': 2,
   'padded-blocks': 0,
