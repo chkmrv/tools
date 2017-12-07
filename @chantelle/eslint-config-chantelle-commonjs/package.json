@@ -1,6 +1,6 @@
 {
   "name": "@chantelle/eslint-config-chantelle-commonjs",
-  "version": "0.0.1-y.0",
+  "version": "0.0.1-y.1",
   "description": "Chantelle common Eslint rules for CommonJs",
   "main": "./index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.0",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.1",
     "babel-eslint": "^8.0.3"
   },
   "devDependencies": {
