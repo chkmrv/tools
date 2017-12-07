@@ -8,7 +8,7 @@ machine:
 jobs:
   build:
     docker:
-      - image: circleci/node:8
+      - image: circleci/yarn:1
 
     steps:
       - checkout
@@ -24,13 +24,14 @@ jobs:
             - chantelle-tools-master
             - chantelle-tools-
 
-      - run: npm install
+      - run: yarn
 
       - save_cache:
           key: chantelle-tools-{{ .Branch }}-{{ checksum "/tmp/tools-checksum" }}
           paths:
+            - ~/.yarn-cache
             - ./node_modules
 
-      - run: npm run build
+      - run: yarn build
 
-      - run: npm test
+      - run: yarn test

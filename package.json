@@ -3,8 +3,8 @@
   "private": true,
   "description": "Common tools for Groupe Chantelle",
   "scripts": {
-    "postinstall": "npm run bootstrap",
-    "reinstall": "npm run purge && npm i",
+    "postinstall": "yarn run bootstrap",
+    "reinstall": "yarn run purge && yarn i",
     "bootstrap": "lerna bootstrap",
     "start": "lerna run start --stream --parallel",
     "test": "lerna run test --parallel --stream",
@@ -12,10 +12,10 @@
     "lint": "lerna run lint --stream --parallel",
     "exec": "lerna exec --stream --parallel",
     "lint-watch": "lerna run lint --stream --parallel -- --watch",
-    "purge": "lerna clean --yes && rm -rf ./node_modules && rm -rf ./package-lock.json && rm -rf ./**/**/package-lock.json",
+    "purge": "lerna clean --yes && rm -rf ./node_modules && rm -rf ./package-lock.json && rm -rf ./yarn.lock && rm -rf ./**/**/package-lock.json && rm -rf ./**/**/yarn.lock",
     "clean": "lerna clean --yes",
     "publish": "lerna publish",
-    "precommit": "npm run lint && npm test"
+    "precommit": "yarn run lint && yarn test"
   },
   "repository": {
     "type": "git",
@@ -37,5 +37,8 @@
   },
   "devDependencies": {
     "husky": "^0.14.3"
-  }
+  },
+  "workspaces": [
+    "@chantelle/*"
+  ]
 }
