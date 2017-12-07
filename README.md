@@ -1,4 +1,5 @@
 # @chantelle/tools
+Common tools for Groupe Chantelle
 
 ## Installation
 - ### `npm i`
