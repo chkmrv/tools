@@ -1,4 +1,7 @@
 # @chantelle/tools
+
+[![CircleCI](https://circleci.com/gh/GroupeChantelle/tools.svg?style=svg)](https://circleci.com/gh/GroupeChantelle/tools)
+
 Common tools for Groupe Chantelle
 
 ## Installation
