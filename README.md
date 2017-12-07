@@ -1,5 +1,7 @@
 # @chantelle/tools
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/GroupeChantelle/tools.svg)](https://greenkeeper.io/)
+
 [![CircleCI](https://circleci.com/gh/GroupeChantelle/tools.svg?style=shield)](https://circleci.com/gh/GroupeChantelle/tools)
 
 Common tools for Groupe Chantelle
