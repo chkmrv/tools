@@ -3,19 +3,18 @@
   "private": true,
   "description": "Common tools for Groupe Chantelle",
   "scripts": {
-    "postinstall": "yarn run bootstrap",
-    "reinstall": "yarn run purge && yarn i",
+    "reinstall": "yarn run purge && yarn",
     "bootstrap": "lerna bootstrap",
-    "start": "lerna run start --stream --parallel",
-    "test": "lerna run test --parallel --stream",
-    "build": "lerna run build --stream --parallel",
-    "lint": "lerna run lint --stream --parallel",
-    "exec": "lerna exec --stream --parallel",
-    "lint-watch": "lerna run lint --stream --parallel -- --watch",
+    "start": "yarn bootstrap && lerna run start --stream --parallel",
+    "test": "yarn bootstrap && lerna run test --parallel --stream",
+    "build": "yarn bootstrap && lerna run build --stream --parallel",
+    "lint": "yarn bootstrap && lerna run lint --stream --parallel",
+    "exec": "yarn bootstrap && lerna exec --stream --parallel",
+    "lint-watch": "yarn bootstrap && lerna run lint --stream --parallel -- --watch",
     "purge": "lerna clean --yes && rm -rf ./node_modules && rm -rf ./package-lock.json && rm -rf ./yarn.lock && rm -rf ./**/**/package-lock.json && rm -rf ./**/**/yarn.lock",
     "clean": "lerna clean --yes",
-    "publish": "lerna publish",
-    "precommit": "yarn run lint && yarn test"
+    "publish": "yarn bootstrap && lerna publish",
+    "precommit": "yarn bootstrap && yarn run lint && yarn test"
   },
   "repository": {
     "type": "git",

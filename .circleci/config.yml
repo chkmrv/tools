@@ -8,14 +8,14 @@ machine:
 jobs:
   build:
     docker:
-      - image: circleci/yarn:1
+      - image: circleci/node:8
 
     steps:
       - checkout
 
       - run:
-          name: Save checksum of package-lock.json
-          command: git log --pretty=format:'%H' -n 1 -- "package-lock.json" > /tmp/tools-checksum
+          name: Save checksum of yarn.lock
+          command: git log --pretty=format:'%H' -n 1 -- "yarn.lock" > /tmp/tools-checksum
 
       - restore_cache:
           keys:
@@ -26,12 +26,13 @@ jobs:
 
       - run: yarn
 
-      - save_cache:
-          key: chantelle-tools-{{ .Branch }}-{{ checksum "/tmp/tools-checksum" }}
-          paths:
-            - ~/.yarn-cache
-            - ./node_modules
-
       - run: yarn build
 
       - run: yarn test
+
+      - save_cache:
+          key: chantelle-tools-{{ .Branch }}-{{ checksum "/tmp/tools-checksum" }}
+          paths:
+            - ~/.yarn/cache
+            - ~/.yarn-cache
+            - ./node_modules

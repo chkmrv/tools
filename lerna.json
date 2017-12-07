@@ -3,5 +3,7 @@
   "packages": [
     "@chantelle/*"
   ],
-  "version": "0.0.1-y.4"
+  "version": "0.0.1-y.4",
+  "npmClient": "yarn",
+  "useWorkspaces": true
 }
