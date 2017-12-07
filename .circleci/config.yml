@@ -1,0 +1,36 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+
+version: 2
+machine:
+  timezone: Europe/Berlin
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8
+
+    steps:
+      - checkout
+
+      - run:
+          name: Save checksum of package-lock.json
+          command: git log --pretty=format:'%H' -n 1 -- "package-lock.json" > /tmp/tools-checksum
+
+      - restore_cache:
+          keys:
+            - chantelle-tools-{{ .Branch }}-{{ checksum "/tmp/tools-checksum" }}
+            - chantelle-tools-{{ .Branch }}
+            - chantelle-tools-master
+            - chantelle-tools-
+
+      - run: npm install
+
+      - save_cache:
+          key: chantelle-tools-{{ .Branch }}-{{ checksum "/tmp/tools-checksum" }}
+          paths:
+            - ./node_modules
+
+      - run: npm run build
+
+      - run: npm test
