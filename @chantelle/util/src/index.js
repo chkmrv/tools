@@ -9,29 +9,28 @@ export const random = (max: number = 9999, min: number = 1): number =>
   Math.floor(Math.random() * (max - min + 1)) + min
 
 export const valueOrDefaultValue = (value: any, defaultValue: any) =>
-  typeof value !== 'undefined' ? value : defaultValue
+  value !== undefined ? value : defaultValue
 
 // eslint-disable-next-line fp/no-nil, better/explicit-return
 export const thrower = (error: Error) => {
   throw error // eslint-disable-line fp/no-throw
 }
 
-export const pipe = (functions: Array<Function>) => (arg: any) =>
+export const pipe = (...functions: Array<Function>): Function => (arg: any) =>
   functions.reduce(
-    (value: any, func: Function): any =>
-      valueOrDefaultValue(func(value), value),
+    (value: any, fn: Function): any => valueOrDefaultValue(fn(value), value),
     arg,
   )
 
 export const compareIntegers = (a: number, b: number): number =>
   a > b ? -1 : b > a ? 1 : 0
 
-export const objectMap = (objectToIterate: Object, func: Function): Object =>
+export const objectMap = (objectToIterate: Object, fn: Function): Object =>
   Object.entries(objectToIterate).reduce(
-    (accumulator, [key, value]) => ({
+    (accumulator, [key: string | number, value: any]) => ({
       ...accumulator,
       ...{
-        [key]: func(value, key),
+        [key]: fn(value, key),
       },
     }),
     objectToIterate,
@@ -42,10 +41,12 @@ export const objectWithBooleansFromStrings = (
 ): Object =>
   objectMap(
     objectToIterate,
-    pipe([
-      value => (value === 'true' ? true : undefined), // eslint-disable-line fp/no-nil
-      value => (value === 'false' ? false : undefined), // eslint-disable-line fp/no-nil
-    ]),
+    pipe(
+      // eslint-disable-next-line fp/no-nil
+      value => (value === 'true' ? true : undefined),
+      // eslint-disable-next-line fp/no-nil
+      value => (value === 'false' ? false : undefined),
+    ),
   )
 
 export const objectWithoutUndefinedValues = (objectToIterate: Object): Object =>
@@ -61,13 +62,14 @@ export const objectWithoutUndefinedValues = (objectToIterate: Object): Object =>
   )
 
 export const getParentModule = (): ?string =>
-  module && module.parent ? module.parent : null // eslint-disable-line fp/no-nil
+  // eslint-disable-next-line fp/no-nil
+  module && module.parent ? module.parent : null
 
 export const debugFactory = (additionalPrefix: ?string = ' %O'): Function =>
   debugFactoryWithName(getParentModule())
 
 export const debug = (variable: ?any, description: ?string = ' %O'): any =>
-  pipe([variable => debugFactory()(description, variable)])(variable)
+  pipe(variable => debugFactory()(description, variable))(variable)
 
 export const arrayToObjectEntries = (
   entry: Array<*>,
@@ -93,3 +95,39 @@ export const objectFilterKeys = (object: Object, filter: Function): Object =>
       }),
       {},
     )
+
+export const clone = (array: Array): Array => [...array]
+
+export const push = (array: Array): Function => (...elements): Array => [
+  ...array,
+  ...elements,
+]
+
+export const pop = (array: Array): Array => array.slice(0, -1)
+
+export const unshift = (array: Array): Function => (element: Any): Array => [
+  element,
+  ...array,
+]
+
+export const shift = (array: Array): Array => array.slice(1)
+
+export const sort = (fn: Function): Function => (array: Array): Array => [
+  ...array,
+]
+
+//eslint-disable-next-line fp/no-mutating-methods
+export const reverse = (array: Array): Array => clone(array).reverse()
+
+export const remove = (array: Array): Function => (i: Number): Array =>
+  //eslint-disable-next-line fp/no-mutating-methods
+  clone(array).splice(i, 1)
+
+export const splice = (array: Array): Function => (
+  position: Number,
+  amount: Number,
+  //eslint-disable-next-line fp/no-mutating-methods
+) => clone(array).splice(position, amount)
+
+//eslint-disable-next-line fp/no-mutating-methods
+export const takeLast = (array: Array): any => clone(array).pop()

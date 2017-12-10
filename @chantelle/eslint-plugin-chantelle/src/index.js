@@ -31,13 +31,11 @@ export const chantelleRules = {
   //fp
   'fp/no-rest-parameters': 0,
 
+  //better
+  'better/no-new': 0,
+
   //react
   'react/no-unused-prop-types': 1,
-  'react/jsx-uses-vars': 1,
-  'react/jsx-uses-react': 1,
-
-  //babel
-  'babel/object-curly-spacing': [1, 'always'],
 
   'array-callback-return': 2,
   'arrow-parens': [2, 'as-needed'],
@@ -50,7 +48,7 @@ export const chantelleRules = {
     },
   ],
 
-  'jsx-quotes': 2,
+  'new-cap': 0,
   'key-spacing': [
     2,
     {
@@ -58,45 +56,6 @@ export const chantelleRules = {
       afterColon: true,
     },
   ],
-
-  'newline-before-return': 0,
-  'no-alert': 0,
-  'no-case-declarations': 1,
-  'no-console': [2, { allow: ['warn', 'error', 'info'] }],
-  'no-dupe-class-members': 2,
-  'no-else-return': 0,
-  'no-irregular-whitespace': 2,
-  'no-nested-ternary': 0,
-  'no-param-reassign': 0,
-  'no-restricted-globals': 0,
-  'no-shadow': 0, // redux requires unbound and bound in same file
-  'no-multi-spaces': 0,
-  'no-multiple-empty-lines': 0,
-  'no-undef': 2,
-  'no-unused-vars': [1, { varsIgnorePattern: 'React', args: 'none' }],
-  'no-use-before-define': 0,
-  'no-useless-escape': 2,
-  'new-cap': 0,
-  'object-curly-spacing': [1, 'always'],
-  'object-shorthand': 2,
-  'padded-blocks': 0,
-  quotes: [2, 'single'],
-  'spaced-comments': 0,
-  'space-before-function-paren': [2, 'never'],
-  'space-in-parens': [0, 'always', { exceptions: ['{}', 'empty'] }],
-  'no-delete-var': 1,
-  'no-self-assign': 2,
-  'no-return-await': 2,
-  'no-loop-func': 2,
-  'no-unreachable': 2,
-  'prefer-const': 0,
-  'no-await-in-loop': 1,
-  semi: [1, 'never'],
-  'max-statements-per-line': [2, { max: 2 }],
-  'array-bracket-spacing': [0, 'always'],
-  'space-before-blocks': [2, 'always'],
-  'max-nested-callbacks': [2, { max: 3 }],
-  'no-debugger': 1,
 }
 
 export const propsToPick = ['env', 'parserOptions', 'root', 'settings']
