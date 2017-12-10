@@ -1,6 +1,6 @@
 {
   "name": "@chantelle/config",
-  "version": "0.0.1-y.1",
+  "version": "0.0.1-y.2",
   "main": "./build/main.js",
   "description": "Stores default common configurations",
   "scripts": {
@@ -14,8 +14,8 @@
     "precommit": "npm run lint && npm test"
   },
   "dependencies": {
-    "@chantelle/scripts": "^0.0.1-y.1",
-    "@chantelle/util": "^0.0.1-y.1",
+    "@chantelle/scripts": "^0.0.1-y.2",
+    "@chantelle/util": "^0.0.1-y.2",
     "autoprefixer": "^7.1.6",
     "babel-eslint": "^8.0.3",
     "babel-loader": "7.1.2",
@@ -53,9 +53,9 @@
     "./get*.js"
   ],
   "devDependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.0.1-y.1",
-    "@chantelle/eslint-config-chantelle": "^0.0.1-y.1",
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.1",
+    "@chantelle/babel-preset-chantelle": "^0.0.1-y.2",
+    "@chantelle/eslint-config-chantelle": "^0.0.1-y.2",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.2",
     "ava": "^0.24.0",
     "babel-core": "^6.26.0",
     "babel-register": "^6.26.0",
