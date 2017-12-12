@@ -1,6 +1,6 @@
 // @flow
 import { debugWithPackageName } from '@nod/debug-with-package-name'
-import { pipe, type, tap } from 'ramda'
+import { pipe as pipeR, type, tap } from 'ramda'
 
 import type { Map as MapType } from 'immutable'
 
@@ -19,11 +19,11 @@ export const thrower = (error: Error) => {
   throw error // eslint-disable-line fp/no-throw
 }
 
-// export const pipe = (...functions: Array<Function>): Function => (arg: any) =>
-//   functions.reduce(
-//     (value: any, fn: Function): any => valueOrDefaultValue(fn(value), value),
-//     arg,
-//   )
+export const pipe = (...functions: Array<Function>): Function => (arg: any) =>
+  functions.reduce(
+    (value: any, fn: Function): any => valueOrDefaultValue(fn(value), value),
+    arg,
+  )
 
 export const compareIntegers = (a: number, b: number): number =>
   a > b ? -1 : b > a ? 1 : 0
@@ -44,7 +44,7 @@ export const objectWithBooleansFromStrings = (
 ): Object =>
   objectMap(
     objectToIterate,
-    pipe(
+    pipeR(
       // eslint-disable-next-line fp/no-nil
       value => (value === 'true' ? true : undefined),
       // eslint-disable-next-line fp/no-nil
@@ -64,8 +64,11 @@ export const objectWithoutUndefinedValues = (objectToIterate: Object): Object =>
     {},
   )
 
-export const debug = (variable?: any, description?: string = ' %O'): any =>
-  tap(variable => debugWithPackageName()(description, variable), variable)
+export const debug = (
+  variable?: any,
+  description?: string = ' %O',
+  debug = debugWithPackageName(),
+): any => tap(variable => debug(description, variable), variable)
 
 export const arrayToObjectEntries = (
   entry: Array<*>,
@@ -144,7 +147,7 @@ export const reducer = (...reducers: Array<Array<any>>): Function => (
     (currentState, [key: string | number, action: any]) =>
       currentState.set(
         key,
-        pipe(
+        pipeR(
           (action: any) =>
             type(action) === 'Function' ? action(currentState) : action,
           (action: any) => tap(action => debug(key, action), action),
