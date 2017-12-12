@@ -1,7 +1,7 @@
 {
   "name": "@chantelle/scripts",
   "main": "./build/main.js",
-  "version": "0.0.1-y.2",
+  "version": "0.0.1-y.3",
   "license": "MIT",
   "description": "Common dev ops scripts for Chantelle projects",
   "repository": {
@@ -38,10 +38,10 @@
   },
   "dependencies": {
     "@babel/register": "^7.0.0-beta.32",
-    "@chantelle/config": "^0.0.1-y.2",
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.2",
-    "@chantelle/gulp-tasks": "^0.0.1-y.2",
-    "@chantelle/util": "^0.0.1-y.2",
+    "@chantelle/config": "^0.0.1-y.3",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.3",
+    "@chantelle/gulp-tasks": "^0.0.1-y.3",
+    "@chantelle/util": "^0.0.1-y.3",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
     "dotenv": "^4.0.0",
@@ -56,9 +56,9 @@
     "webpack-dev-server": "^2.9.4"
   },
   "devDependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.0.1-y.2",
-    "@chantelle/eslint-config-chantelle": "^0.0.1-y.2",
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.2",
+    "@chantelle/babel-preset-chantelle": "^0.0.1-y.3",
+    "@chantelle/eslint-config-chantelle": "^0.0.1-y.3",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.3",
     "ava": "^0.24.0",
     "backpack-core": "^0.4.3",
     "eslint": "^4.11.0",
