@@ -1,5 +1,8 @@
 // @flow
-import debugFactoryWithName from '@nod/debug-with-package-name'
+import { debugWithPackageName } from '@nod/debug-with-package-name'
+import { pipe, type, tap } from 'ramda'
+
+import type { Map as MapType } from 'immutable'
 
 export const createNumberSequence = (length: number): Array<*> => [
   ...Array(length).keys(),
@@ -16,11 +19,11 @@ export const thrower = (error: Error) => {
   throw error // eslint-disable-line fp/no-throw
 }
 
-export const pipe = (...functions: Array<Function>): Function => (arg: any) =>
-  functions.reduce(
-    (value: any, fn: Function): any => valueOrDefaultValue(fn(value), value),
-    arg,
-  )
+// export const pipe = (...functions: Array<Function>): Function => (arg: any) =>
+//   functions.reduce(
+//     (value: any, fn: Function): any => valueOrDefaultValue(fn(value), value),
+//     arg,
+//   )
 
 export const compareIntegers = (a: number, b: number): number =>
   a > b ? -1 : b > a ? 1 : 0
@@ -61,15 +64,8 @@ export const objectWithoutUndefinedValues = (objectToIterate: Object): Object =>
     {},
   )
 
-export const getParentModule = (): ?string =>
-  // eslint-disable-next-line fp/no-nil
-  module && module.parent ? module.parent : null
-
-export const debugFactory = (additionalPrefix: ?string = ' %O'): Function =>
-  debugFactoryWithName(getParentModule())
-
-export const debug = (variable: ?any, description: ?string = ' %O'): any =>
-  pipe(variable => debugFactory()(description, variable))(variable)
+export const debug = (variable?: any, description?: string = ' %O'): any =>
+  tap(variable => debugWithPackageName()(description, variable), variable)
 
 export const arrayToObjectEntries = (
   entry: Array<*>,
@@ -96,38 +92,63 @@ export const objectFilterKeys = (object: Object, filter: Function): Object =>
       {},
     )
 
-export const clone = (array: Array): Array => [...array]
+export const clone = (array: Array<any>): Array<any> => [...array]
 
-export const push = (array: Array): Function => (...elements): Array => [
-  ...array,
-  ...elements,
-]
+export const push = (array: Array<any>): Function => (
+  ...elements
+): Array<any> => [...array, ...elements]
 
-export const pop = (array: Array): Array => array.slice(0, -1)
+export const pop = (array: Array<any>): Array<any> => array.slice(0, -1)
 
-export const unshift = (array: Array): Function => (element: Any): Array => [
-  element,
-  ...array,
-]
+export const unshift = (array: Array<any>): Function => (
+  element: any,
+): Array<any> => [element, ...array]
 
-export const shift = (array: Array): Array => array.slice(1)
+export const shift = (array: Array<any>): Array<any> => array.slice(1)
 
-export const sort = (fn: Function): Function => (array: Array): Array => [
-  ...array,
-]
+export const sort = (fn: Function): Function => (
+  array: Array<any>,
+): Array<any> => [...array]
 
 //eslint-disable-next-line fp/no-mutating-methods
-export const reverse = (array: Array): Array => clone(array).reverse()
+export const reverse = (array: Array<any>): Array<any> => clone(array).reverse()
 
-export const remove = (array: Array): Function => (i: Number): Array =>
+export const remove = (array: Array<any>): Function => (
+  i: number,
+): Array<any> =>
   //eslint-disable-next-line fp/no-mutating-methods
   clone(array).splice(i, 1)
 
-export const splice = (array: Array): Function => (
-  position: Number,
-  amount: Number,
+export const splice = (array: Array<any>): Function => (
+  position: number,
+  amount: number,
   //eslint-disable-next-line fp/no-mutating-methods
 ) => clone(array).splice(position, amount)
 
 //eslint-disable-next-line fp/no-mutating-methods
-export const takeLast = (array: Array): any => clone(array).pop()
+export const takeLast = (array: Array<any>): any => clone(array).pop()
+
+export const debugReducer = (prefix?: string = '') => (
+  key: string | number,
+  action: any,
+  debug = debugWithPackageName(prefix),
+) => debug(key.concat(' %O'), action)
+
+export const reducer = (...reducers: Array<Array<any>>): Function => (
+  // state: MapType,
+  state,
+  debug = debugReducer(),
+  // ): MapType =>
+): any =>
+  [...reducers].reduce(
+    (currentState, [key: string | number, action: any]) =>
+      currentState.set(
+        key,
+        pipe(
+          (action: any) =>
+            type(action) === 'Function' ? action(currentState) : action,
+          (action: any) => tap(action => debug(key, action), action),
+        )(action),
+      ),
+    state,
+  )

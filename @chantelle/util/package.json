@@ -3,7 +3,9 @@
   "main": "./build/main.js",
   "version": "0.0.1-y.2",
   "dependencies": {
-    "@nod/debug-with-package-name": "^0.1.0"
+    "@nod/debug-with-package-name": "^1.0.0",
+    "immutable": "^3.8.2",
+    "ramda": "^0.25.0"
   },
   "devDependencies": {
     "@chantelle/babel-preset-chantelle": "^0.0.1-y.2",

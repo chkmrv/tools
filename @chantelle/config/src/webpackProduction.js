@@ -49,8 +49,8 @@ export const webpackProductionConfig = () => {
   // Assert this just to be safe.
   // Development builds of React are slow and not intended for production.
   const { NODE_ENV: stringEnv } = stringifiedEnv['process.env']
-  if (stringEnv !== '"production"')
-    thrower(Error('Production builds must have NODE_ENV=production.'))
+  // if (stringEnv !== '"production"')
+  //   thrower(Error('Production builds must have NODE_ENV=production.'))
 
   // Note: defined here because it will be used more than once.
   // const cssFilename = 'static/css/[name].[contenthash:8].css';
