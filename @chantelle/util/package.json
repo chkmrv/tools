@@ -1,16 +1,16 @@
 {
   "name": "@chantelle/util",
   "main": "./build/main.js",
-  "version": "0.0.1-y.3",
+  "version": "0.0.1-y.4",
   "dependencies": {
     "@nod/debug-with-package-name": "^1.0.0",
     "immutable": "^3.8.2",
     "ramda": "^0.25.0"
   },
   "devDependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.0.1-y.3",
-    "@chantelle/eslint-config-chantelle": "^0.0.1-y.3",
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.3",
+    "@chantelle/babel-preset-chantelle": "^0.0.1-y.4",
+    "@chantelle/eslint-config-chantelle": "^0.0.1-y.4",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.4",
     "ava": "^0.24.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",

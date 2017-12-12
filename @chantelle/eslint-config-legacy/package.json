@@ -1,6 +1,6 @@
 {
   "name": "@chantelle/eslint-config-legacy",
-  "version": "0.0.1-y.3",
+  "version": "0.0.1-y.4",
   "description": "Common Eslint rules for Legacy projects of Chantelle",
   "main": "./index.js",
   "scripts": {
@@ -15,11 +15,11 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.3",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.4",
     "babel-eslint": "^8.0.3"
   },
   "devDependencies": {
-    "@chantelle/eslint-config-chantelle-commonjs": "^0.0.1-y.3",
+    "@chantelle/eslint-config-chantelle-commonjs": "^0.0.1-y.4",
     "eslint": "^4.11.0",
     "eslint-config-cleanjs": "^4.0.0",
     "eslint-config-react-app": "^2.0.1",
