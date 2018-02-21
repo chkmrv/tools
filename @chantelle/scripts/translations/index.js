@@ -15,9 +15,9 @@ function createJsonTranlations(structure, dist) {
   _.forEach(structure, (obj, key) => {
     mkdirp(path.resolve(dist), err => {
       if (err) console.error(err)
-      const file =  path.resolve(`${ dist }__translation__${ key }.json`)
+      const file = path.resolve(`${dist}__translation__${key}.json`)
 
-      console.log('file',file)
+      console.log('file', file)
       jsonfile.writeFile(file, obj, { spaces: 2 }, err => {
         if (err) console.error(err)
       })

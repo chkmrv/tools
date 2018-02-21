@@ -4,37 +4,24 @@
   "version": "0.0.1-y.4",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org:editionlingerie/chantelle-tools.git"
+    "url": "git+ssh://git@github.com:GroupeChantelle/tools.git"
   },
   "dependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.0.1-y.4",
     "@chantelle/util": "^0.0.1-y.4",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.2",
+    "backpack-core": "^0.5.0",
     "eslint-config-cleanjs": "^4.0.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-config-react-app": "^2.0.1",
-    "eslint-plugin-babel": "^4.1.2",
-    "eslint-plugin-better": "^0.1.5",
-    "eslint-plugin-flowtype": "^2.39.1",
-    "eslint-plugin-fp": "^2.3.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-prettier": "^2.3.1",
-    "eslint-plugin-react": "^7.5.1",
     "flow-runtime": "^0.16.0",
-    "lodash": "^4.17.4"
+    "jest": "^22.1.2",
+    "lodash": "^4.17.4",
+    "webpack": "^3.11.0"
   },
   "devDependencies": {
     "ava": "^0.24.0",
-    "backpack-core": "^0.4.3",
-    "eslint": "^4.12.1",
-    "eslint-plugin-jest": "^21.4.2",
-    "husky": "^0.14.3",
-    "prettier": "^1.8.2"
+    "flow-bin": "^0.66.0",
+    "flow-typed": "^2.3.0"
   },
   "peerDependencies": {
-    "babel-eslint": "^8.0.2",
+    "babel-eslint": "^8.2.1",
     "eslint": "^4.11.0",
     "eslint-plugin-prettier": "^2.3.1",
     "prettier": "^1.8.2"
@@ -42,19 +29,10 @@
   "license": "MIT",
   "scripts": {
     "test": "ava",
-    "start": "nodemon --ignore \"build\" --exec \"npm run build\"",
+    "start": "nodemon --ignore \"build\" --exec \"yarn build\"",
     "lint": "eslint ./src --fix",
     "build": "backpack build",
-    "prepublish": "npm run build",
-    "prepare": "echo \"noop\"",
-    "precommit": "npm run lint && npm test"
+    "prepare": "flow-typed update"
   },
-  "eslintIgnore": [
-    "node_modules"
-  ],
-  "babel": {
-    "presets": [
-      "@chantelle/chantelle"
-    ]
-  }
+  "homepage": "https://github.com/GroupeChantelle/tools"
 }

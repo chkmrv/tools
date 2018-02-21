@@ -1,4 +1,4 @@
-// flow-typed signature: 9b76e7998681793bddad95f5e88008bf
+// flow-typed signature: 4e06e90d4ae7d3d870bcfd8a790a9f36
 // flow-typed version: <<STUB>>/nodemon_v^1.12.1/flow_v0.60.1
 
 /**
@@ -27,10 +27,6 @@ declare module 'nodemon/bin/nodemon' {
 }
 
 declare module 'nodemon/commitlint.config' {
-  declare module.exports: any;
-}
-
-declare module 'nodemon/docs/index' {
   declare module.exports: any;
 }
 
@@ -79,6 +75,10 @@ declare module 'nodemon/lib/monitor/match' {
 }
 
 declare module 'nodemon/lib/monitor/run' {
+  declare module.exports: any;
+}
+
+declare module 'nodemon/lib/monitor/signals' {
   declare module.exports: any;
 }
 
@@ -141,9 +141,6 @@ declare module 'nodemon/bin/nodemon.js' {
 declare module 'nodemon/commitlint.config.js' {
   declare module.exports: $Exports<'nodemon/commitlint.config'>;
 }
-declare module 'nodemon/docs/index.js' {
-  declare module.exports: $Exports<'nodemon/docs/index'>;
-}
 declare module 'nodemon/lib/cli/index.js' {
   declare module.exports: $Exports<'nodemon/lib/cli/index'>;
 }
@@ -179,6 +176,9 @@ declare module 'nodemon/lib/monitor/match.js' {
 }
 declare module 'nodemon/lib/monitor/run.js' {
   declare module.exports: $Exports<'nodemon/lib/monitor/run'>;
+}
+declare module 'nodemon/lib/monitor/signals.js' {
+  declare module.exports: $Exports<'nodemon/lib/monitor/signals'>;
 }
 declare module 'nodemon/lib/monitor/watch.js' {
   declare module.exports: $Exports<'nodemon/lib/monitor/watch'>;

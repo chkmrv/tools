@@ -64,7 +64,7 @@ export const getConfigBase = () => ({
   parser: 'babel-eslint',
   extends: ['plugin:flowtype/recommended', 'plugin:jest/recommended'],
   plugins: [
-    // '@chantelle/chantelle',
+    '@chantelle/chantelle',
     'jest',
     'babel',
     'flowtype',
@@ -82,10 +82,12 @@ export const getConfigBase = () => ({
     'jest/globals': true,
   },
   parserOptions: {
+    parser: 'babel-eslint',
     ecmaVersion: 7,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
+      pipelineOperator: true,
     },
   },
 })

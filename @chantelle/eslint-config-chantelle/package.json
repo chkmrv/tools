@@ -3,53 +3,29 @@
   "version": "0.0.1-y.4",
   "description": "Chantelle common Eslint rules",
   "main": "./index.js",
-  "scripts": {
-    "lint": "eslint ./ --fix",
-    "build": "echo \"noop\"",
-    "start": "nodemon --exec \"npm run build\"",
-    "test": "echo \"noop\"",
-    "pretest": "npm run build",
-    "prepublish": "echo \"noop\"",
-    "prepare": "echo \"noop\"",
-    "precommit": "npm run lint && npm test"
-  },
   "license": "MIT",
   "dependencies": {
     "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.4",
-    "babel-eslint": "^8.0.3"
+    
+    "webpack": "^3.11.0"
   },
   "devDependencies": {
-    "@chantelle/eslint-config-chantelle-commonjs": "^0.0.1-y.4",
-    "eslint": "^4.12.1",
-    "eslint-config-cleanjs": "^4.0.0",
-    "eslint-config-react-app": "^2.0.1",
-    "eslint-plugin-babel": "^4.1.2",
-    "eslint-plugin-better": "^0.1.5",
-    "eslint-plugin-flowtype": "^2.39.1",
-    "eslint-plugin-fp": "^2.3.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jest": "^21.4.2",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-prettier": "^2.3.1",
-    "eslint-plugin-react": "^7.5.1",
-    "husky": "^0.14.3",
-    "nodemon": "^1.12.1",
-    "prettier": "^1.8.2"
-  },
-  "peerDependencies": {
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.4",
-    "eslint": "^4.12.1"
+    "flow-bin": "^0.66.0",
+    "flow-typed": "^2.3.0",
+    "@chantelle/eslint-config-chantelle-commonjs": "^0.0.1-y.4"
   },
   "eslintConfig": {
     "extends": [
       "@chantelle/chantelle-commonjs"
     ]
   },
-  "eslintIgnore": [
-    "node_modules"
-  ],
+  "peerDependencies": {
+    "eslint": "^4.11.0",
+    "prettier": "^1.8.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:GroupeChantelle/tools.git"
-  }
+  },
+  "homepage": "https://github.com/GroupeChantelle/tools"
 }

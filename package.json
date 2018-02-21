@@ -3,19 +3,32 @@
   "private": true,
   "description": "Common tools for Groupe Chantelle",
   "scripts": {
-    "postinstall": "npm run bootstrap",
-    "reinstall": "npm run purge && npm i",
-    "bootstrap": "lerna bootstrap",
+    "reinstall": "yon run purge && yon install",
     "start": "lerna run start --stream --parallel",
     "test": "lerna run test --parallel --stream",
     "build": "lerna run build --stream --parallel",
     "lint": "lerna run lint --stream --parallel",
     "exec": "lerna exec --stream --parallel",
     "lint-watch": "lerna run lint --stream --parallel -- --watch",
-    "purge": "lerna clean --yes && rm -rf ./node_modules && rm -rf ./package-lock.json && rm -rf ./**/**/package-lock.json",
-    "clean": "lerna clean --yes",
+    "purge-package-lock": "rm -rf ./package-lock.json && rm -rf ./**/**/package-lock.json",
+    "purge-yarn-lock": "rm -rf ./yarn.lock && rm -rf ./**/**/yarn.lock",
+    "purge-modules": "rm -rf ./node_module",
+    "purge-lerna": "lerna clean --yes --stream --parallel",
+    "purge": "run-p purge-*",
     "publish": "lerna publish",
-    "precommit": "npm run lint && npm test"
+    "prepublishOnly": "yon run build",
+    "precommit-test": "yon run lint",
+    "precommit-lint": "yon test",
+    "precommit": "cross-env NPM_EXECPATH=yon run-p precommit-*",
+    "link": "lerna exec \"yon link\" --stream --parallel",
+    "postinstall-production-prepare": "lerna run prepare",
+    "postinstall-production-bootstrap": "lerna bootstrap --production",
+    "postinstall-production": "cross-env NPM_EXECPATH=yon npm-run-all postinstall-production-*",
+    "postinstall-dev-prepare": "lerna run prepare",
+    "postinstall-dev-prepublish": "lerna run prepublish",
+    "postinstall-dev-link": "yon run link",
+    "postinstall-dev": "cross-env NPM_EXECPATH=yon npm-run-all postinstall-dev-*",
+    "postinstall": "if-env NODE_ENV=production && yon run postinstall-production || yon run postinstall-dev"
   },
   "repository": {
     "type": "git",
@@ -32,10 +45,56 @@
     "gulp"
   ],
   "license": "MIT",
+  "eslintConfig": {
+    "extends": [
+      "@chantelle/chantelle"
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "@chantelle/**/build",
+    "@chantelle/**/flow-typed",
+    "@chantelle/**/node_modules",
+    "**/coverage",
+    "@chantelle/scripts/translations/*",
+    "@chantelle/config/get*.js"
+  ],
+  "babel": {
+    "presets": [
+      "@chantelle/chantelle"
+    ]
+  },
   "dependencies": {
-    "lerna": "^2.5.1"
+    "cross-env": "^5.1.3",
+    "if-env": "^1.0.0",
+    "lerna": "^2.6.0",
+    "npm-run-all": "^4.1.2",
+    "yarn-or-npm": "^2.0.4"
   },
   "devDependencies": {
-    "husky": "^0.14.3"
-  }
+    "@babel/core": "^7.0.0-beta.38",
+    "@chantelle/babel-preset-chantelle": "^0.0.1-y.4",
+    "@chantelle/eslint-config-chantelle": "^0.0.1-y.4",
+    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.4",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^8.2.1",
+    "backpack-core-babel-7": "^0.6.0",
+    "eslint": "^4.15.0",
+    "eslint-config-cleanjs": "^4.0.0",
+    "eslint-config-react-app": "^3.0.0-next.9754a231",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-better": "^0.1.5",
+    "eslint-plugin-flowtype": "^2.41.0",
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.6.1",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-react": "^7.5.1",
+    "husky": "^0.14.3",
+    "prettier": "^1.9.2"
+  },
+  "workspaces": [
+    "@chantelle/*"
+  ]
 }

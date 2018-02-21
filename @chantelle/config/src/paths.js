@@ -1,12 +1,12 @@
 /* eslint better/no-ifs:0 */
 import { resolve, substr, join } from 'path'
 // import { debug } from '@chantelle/util'
-import { realpathSync } from 'fs'
+import fs from 'fs'
 import url from 'url'
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebookincubator/create-react-app/issues/637
-export const appDirectory = realpathSync(process.cwd())
+export const appDirectory = fs.realpathSync(process.cwd())
 
 export const resolveApp = relativePath => resolve(appDirectory, relativePath)
 

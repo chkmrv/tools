@@ -1,7 +1,5 @@
 {
-  "eslintConfig": {
-    "extends": [
-      "@chantelle/chantelle-commonjs"
-    ]
-  }
+  "extends": [
+    "@chantelle/chantelle-commonjs"
+  ]
 }

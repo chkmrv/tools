@@ -4,60 +4,27 @@
   "version": "0.0.1-y.4",
   "dependencies": {
     "@nod/debug-with-package-name": "^1.0.0",
+    "backpack-core": "^0.5.0",
+    "flow-runtime": "^0.16.0",
     "immutable": "^3.8.2",
-    "ramda": "^0.25.0"
+    "webpack": "^3.11.0"
   },
   "devDependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.0.1-y.4",
-    "@chantelle/eslint-config-chantelle": "^0.0.1-y.4",
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.4",
     "ava": "^0.24.0",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.3",
-    "backpack-core": "^0.4.3",
-    "eslint": "^4.12.1",
-    "eslint-config-cleanjs": "^4.0.0",
-    "eslint-config-react-app": "^2.0.1",
-    "eslint-plugin-babel": "^4.1.2",
-    "eslint-plugin-better": "^0.1.5",
-    "eslint-plugin-flowtype": "^2.39.1",
-    "eslint-plugin-fp": "^2.3.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jest": "^21.4.2",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-prettier": "^2.3.1",
-    "eslint-plugin-react": "^7.5.1",
-    "flow-bin": "^0.60.1",
-    "flow-runtime": "^0.16.0",
-    "husky": "^0.14.3",
-    "nodemon": "^1.12.1",
-    "prettier": "^1.8.2"
+    "nodemon": "^1.12.1"
   },
-  "babel": {
-    "presets": [
-      "@chantelle/chantelle"
-    ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "@chantelle/chantelle"
-    ]
-  },
-  "eslintIgnore": [
-    "node_modules"
-  ],
   "scripts": {
-    "lint": "eslint ./src --fix",
-    "start": "nodemon --ignore \"build\" --exec \"npm run build\"",
-    "build": "backpack build",
     "test": "ava",
-    "prepublish": "echo \"noop\"",
-    "prepare": "echo \"noop\"",
-    "precommit": "npm run lint && npm test && flow-typed install"
+    "lint": "eslint ./src --fix",
+    "start": "nodemon --ignore \"build\" --exec \"yarn build\"",
+    "build": "backpack build",
+    "pretest": "yarn build",
+    "prepare": "flow-typed update"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:GroupeChantelle/tools.git"
-  }
+  },
+  "homepage": "https://github.com/GroupeChantelle/tools"
 }

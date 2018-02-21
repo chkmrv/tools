@@ -11,7 +11,7 @@ export const tasks = gulp => {
   const linkFolder = folder =>
     gulp
       .src(appDirectory)
-      .pipe(shell([`npm link ${folder}`]))
+      .pipe(shell([`yarn link ${folder}`]))
       .on('error', log)
 
   gulp.task('link-config', () => linkFolder(config))

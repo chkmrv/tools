@@ -1,6 +1,6 @@
 // @flow
 import { debugWithPackageName } from '@nod/debug-with-package-name'
-import { pipe as pipeR, type, tap } from 'ramda'
+import { pipe as pipeRamda, type, tap } from 'ramda'
 
 import type { Map as MapType } from 'immutable'
 
@@ -44,7 +44,7 @@ export const objectWithBooleansFromStrings = (
 ): Object =>
   objectMap(
     objectToIterate,
-    pipeR(
+    pipeRamda(
       // eslint-disable-next-line fp/no-nil
       value => (value === 'true' ? true : undefined),
       // eslint-disable-next-line fp/no-nil
@@ -147,7 +147,7 @@ export const reducer = (...reducers: Array<Array<any>>): Function => (
     (currentState, [key: string | number, action: any]) =>
       currentState.set(
         key,
-        pipeR(
+        pipeRamda(
           (action: any) =>
             type(action) === 'Function' ? action(currentState) : action,
           (action: any) => tap(action => debug(key, action), action),
@@ -155,3 +155,6 @@ export const reducer = (...reducers: Array<Array<any>>): Function => (
       ),
     state,
   )
+
+export const debugPipe = (description: string): Function =>
+  curry(debug(__, description.concat(' %O')))
