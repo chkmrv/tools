@@ -18,13 +18,13 @@
   },
   "scripts": {
     "lint": "eslint --fix ./src",
-    "start": "nodemon --ignore \"build\" --exec \"npm run build\"",
+    "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
     "test": "ava",
-    "pretest": "npm run build",
+    "pretest": "yon run build",
     "build": "backpack build",
-    "prepublish": "npm run build",
+    "prepublish": "yon run build",
     "prepare": "echo \"noop\"",
-    "precommit": "npm run lint && npm test"
+    "precommit": "yon run lint && yon test"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +45,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
     "dotenv": "^4.0.0",
+    "empty": "^0.10.1",
     "eslint": "^4.12.1",
     "flow-runtime": "^0.16.0",
     "fs-extra": "^4.0.2",
@@ -53,7 +54,8 @@
     "prettier": "^1.8.2",
     "react-dev-utils": "^4.2.1",
     "shelljs": "^0.7.8",
-    "webpack-dev-server": "^2.9.4"
+    "webpack-dev-server": "^2.9.4",
+    "yarn-or-npm": "^2.0.4"
   },
   "devDependencies": {
     "@chantelle/babel-preset-chantelle": "^0.0.1-y.4",

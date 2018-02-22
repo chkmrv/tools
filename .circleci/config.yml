@@ -14,8 +14,8 @@ jobs:
       - checkout
 
       - run:
-          name: Save checksum of package-lock.json
-          command: git log --pretty=format:'%H' -n 1 -- "package-lock.json" > /tmp/tools-checksum
+          name: Save checksum of yarn.lock
+          command: git log --pretty=format:'%H' -n 1 -- "yarn.lock" > /tmp/tools-checksum
 
       - restore_cache:
           keys:
@@ -24,13 +24,13 @@ jobs:
             - chantelle-tools-master
             - chantelle-tools-
 
-      - run: npm install
+      - run: yarn install
 
       - save_cache:
           key: chantelle-tools-{{ .Branch }}-{{ checksum "/tmp/tools-checksum" }}
           paths:
             - ./node_modules
 
-      - run: npm run build
+      - run: yarn build
 
-      - run: npm test
+      - run: yarn test

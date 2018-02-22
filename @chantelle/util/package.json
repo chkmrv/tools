@@ -4,8 +4,10 @@
   "version": "0.0.1-y.4",
   "dependencies": {
     "@nod/debug-with-package-name": "^1.0.0",
+    "empty": "^0.10.1",
     "immutable": "^3.8.2",
-    "ramda": "^0.25.0"
+    "ramda": "^0.25.0",
+    "yarn-or-npm": "^2.0.4"
   },
   "devDependencies": {
     "@chantelle/babel-preset-chantelle": "^0.0.1-y.4",
@@ -48,12 +50,12 @@
   ],
   "scripts": {
     "lint": "eslint ./src --fix",
-    "start": "nodemon --ignore \"build\" --exec \"npm run build\"",
+    "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
     "build": "backpack build",
     "test": "ava",
     "prepublish": "echo \"noop\"",
     "prepare": "echo \"noop\"",
-    "precommit": "npm run lint && npm test && flow-typed install"
+    "precommit": "yon run lint && yon test && flow-typed install"
   },
   "license": "MIT",
   "repository": {

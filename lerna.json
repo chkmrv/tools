@@ -1,7 +1,8 @@
 {
-  "lerna": "2.5.1",
+  "lerna": "2.9.0",
   "packages": [
     "@chantelle/*"
   ],
-  "version": "0.0.1-y.4"
+  "version": "0.0.1-y.4",
+  "npmClient": "yarn"
 }

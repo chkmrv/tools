@@ -1,4 +1,4 @@
-// flow-typed signature: 6ffddad5b75c7784cf24fa26332950a4
+// flow-typed signature: 4441d0ce8ec8f3b8dcd40f863e15b87a
 // flow-typed version: <<STUB>>/prettier_v^1.8.2/flow_v0.60.1
 
 /**
@@ -22,7 +22,7 @@ declare module 'prettier' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'prettier/bin/prettier' {
+declare module 'prettier/bin-prettier' {
   declare module.exports: any;
 }
 
@@ -31,6 +31,10 @@ declare module 'prettier/parser-babylon' {
 }
 
 declare module 'prettier/parser-flow' {
+  declare module.exports: any;
+}
+
+declare module 'prettier/parser-glimmer' {
   declare module.exports: any;
 }
 
@@ -54,13 +58,17 @@ declare module 'prettier/parser-typescript' {
   declare module.exports: any;
 }
 
+declare module 'prettier/parser-vue' {
+  declare module.exports: any;
+}
+
 declare module 'prettier/third-party' {
   declare module.exports: any;
 }
 
 // Filename aliases
-declare module 'prettier/bin/prettier.js' {
-  declare module.exports: $Exports<'prettier/bin/prettier'>;
+declare module 'prettier/bin-prettier.js' {
+  declare module.exports: $Exports<'prettier/bin-prettier'>;
 }
 declare module 'prettier/index' {
   declare module.exports: $Exports<'prettier'>;
@@ -73,6 +81,9 @@ declare module 'prettier/parser-babylon.js' {
 }
 declare module 'prettier/parser-flow.js' {
   declare module.exports: $Exports<'prettier/parser-flow'>;
+}
+declare module 'prettier/parser-glimmer.js' {
+  declare module.exports: $Exports<'prettier/parser-glimmer'>;
 }
 declare module 'prettier/parser-graphql.js' {
   declare module.exports: $Exports<'prettier/parser-graphql'>;
@@ -88,6 +99,9 @@ declare module 'prettier/parser-postcss.js' {
 }
 declare module 'prettier/parser-typescript.js' {
   declare module.exports: $Exports<'prettier/parser-typescript'>;
+}
+declare module 'prettier/parser-vue.js' {
+  declare module.exports: $Exports<'prettier/parser-vue'>;
 }
 declare module 'prettier/third-party.js' {
   declare module.exports: $Exports<'prettier/third-party'>;

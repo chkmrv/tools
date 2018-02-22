@@ -6,11 +6,11 @@
   "scripts": {
     "lint": "eslint ./src --fix",
     "build": "echo \"noop\"",
-    "start": "nodemon --ignore \"build\" --exec \"npm run build\"",
+    "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
     "test": "echo \"noop\"",
     "prepublish": "echo \"noop\"",
     "prepare": "echo \"noop\"",
-    "precommit": "npm run lint && npm test"
+    "precommit": "yon run lint && yon test"
   },
   "repository": {
     "type": "git",
@@ -32,7 +32,9 @@
     "babel-preset-flow-runtime": "^0.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-app": "^3.1.0",
-    "babel-preset-stage-2": "^6.24.1"
+    "babel-preset-stage-2": "^6.24.1",
+    "empty": "^0.10.1",
+    "yarn-or-npm": "^2.0.4"
   },
   "eslintConfig": {
     "extends": [

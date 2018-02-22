@@ -8,6 +8,7 @@
     "@chantelle/util": "^0.0.1-y.4",
     "babel-eslint": "^8.0.3",
     "babel-register": "^6.26.0",
+    "empty": "^0.10.1",
     "flow-runtime": "^0.16.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-env": "^0.4.0",
@@ -17,7 +18,8 @@
     "gulp-load-plugins": "^1.5.0",
     "gulp-print": "^2.0.1",
     "gulp-shell": "^0.6.3",
-    "gulp-util": "^3.0.8"
+    "gulp-util": "^3.0.8",
+    "yarn-or-npm": "^2.0.4"
   },
   "devDependencies": {
     "@chantelle/babel-preset-chantelle": "^0.0.1-y.4",
@@ -53,13 +55,13 @@
   },
   "scripts": {
     "test": "ava",
-    "pretest": "npm run build",
-    "start": "nodemon --ignore \"build\" --exec \"npm run build\"",
+    "pretest": "yon run build",
+    "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
     "lint": "eslint ./src --fix",
     "build": "backpack build",
     "prepublish": "echo \"noop\"",
     "prepare": "echo \"noop\"",
-    "precommit": "npm run lint && npm test"
+    "precommit": "yon run lint && yon test"
   },
   "eslintConfig": {
     "extends": [
