@@ -3,7 +3,8 @@
   "private": true,
   "description": "Common tools for Groupe Chantelle",
   "scripts": {
-    "postinstall": "yarn bootstrap",
+    "bootstrap-workaround": "lerna run yarn && lerna link && lerna add empty -D",
+    "postinstall": "yarn bootstrap-workaround",
     "bootstrap": "lerna bootstrap",
     "start": "lerna run start --stream --parallel",
     "test": "lerna run test --parallel --stream",
@@ -17,6 +18,7 @@
     "reinstall": "yarn purge && yarn",
     "clean": "lerna clean --yes",
     "publish-all": "lerna publish",
+    "publish": "lerna publish",
     "postmerge": "yarn && yarn bootstrap",
     "precommit": "yarn lint",
     "prepublishOnly": "yarn test",
@@ -44,5 +46,8 @@
   "devDependencies": {
     "husky": "^0.14.3",
     "if-env": "^1.0.4"
-  }
+  },
+  "workspaces": [
+    "@chantelle/*"
+  ]
 }
