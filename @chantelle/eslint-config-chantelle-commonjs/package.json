@@ -6,17 +6,19 @@
   "scripts": {
     "lint": "eslint ./ --fix",
     "build": "echo \"noop\"",
-    "start": "nodemon --exec \"npm run build\"",
+    "start": "nodemon --exec \"yon run build\"",
     "test": "echo \"noop\"",
-    "pretest": "npm run build",
+    "pretest": "yon run build",
     "prepublish": "echo \"noop\"",
     "prepare": "echo \"noop\"",
-    "precommit": "npm run lint && npm test"
+    "precommit": "yon run lint && yon test"
   },
   "license": "MIT",
   "dependencies": {
     "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.4",
-    "babel-eslint": "^8.0.3"
+    "babel-eslint": "^8.0.3",
+    "empty": "^0.10.1",
+    "yarn-or-npm": "^2.0.4"
   },
   "devDependencies": {
     "eslint": "^4.12.1",

@@ -3,8 +3,8 @@
   "private": true,
   "description": "Common tools for Groupe Chantelle",
   "scripts": {
-    "postinstall": "npm run bootstrap",
-    "reinstall": "npm run purge && npm i",
+    "postinstall": "yon run bootstrap",
+    "reinstall": "yon run purge && $(yarn || npm install)",
     "bootstrap": "lerna bootstrap",
     "start": "lerna run start --stream --parallel",
     "test": "lerna run test --parallel --stream",
@@ -15,7 +15,7 @@
     "purge": "lerna clean --yes && rm -rf ./node_modules && rm -rf ./package-lock.json && rm -rf ./**/**/package-lock.json",
     "clean": "lerna clean --yes",
     "publish": "lerna publish",
-    "precommit": "npm run lint && npm test"
+    "precommit": "yon run lint && yon test"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "lerna": "^2.5.1"
+    "lerna": "^2.9.0",
+    "npm-run-all": "^4.1.2",
+    "yarn-or-npm": "^2.0.4"
   },
   "devDependencies": {
     "husky": "^0.14.3"

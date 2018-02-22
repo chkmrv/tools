@@ -1,4 +1,4 @@
-// flow-typed signature: 66a8c7c53dbba4b3f72f4717a746ab0f
+// flow-typed signature: d7b26e979a6e36f218ca94db52bd70b9
 // flow-typed version: <<STUB>>/eslint_v^4.12.1/flow_v0.60.1
 
 /**
@@ -1326,6 +1326,10 @@ declare module 'eslint/lib/util/hash' {
   declare module.exports: any;
 }
 
+declare module 'eslint/lib/util/interpolate' {
+  declare module.exports: any;
+}
+
 declare module 'eslint/lib/util/keywords' {
   declare module.exports: any;
 }
@@ -2360,6 +2364,9 @@ declare module 'eslint/lib/util/glob.js' {
 }
 declare module 'eslint/lib/util/hash.js' {
   declare module.exports: $Exports<'eslint/lib/util/hash'>;
+}
+declare module 'eslint/lib/util/interpolate.js' {
+  declare module.exports: $Exports<'eslint/lib/util/interpolate'>;
 }
 declare module 'eslint/lib/util/keywords.js' {
   declare module.exports: $Exports<'eslint/lib/util/keywords'>;
