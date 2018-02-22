@@ -46,10 +46,7 @@
     "test": "ava",
     "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
     "lint": "eslint ./src --fix",
-    "build": "backpack build",
-    "prepublish": "yon run build",
-    "prepare": "echo \"noop\"",
-    "precommit": "yon run lint && yon test"
+    "build": "backpack build"
   },
   "eslintIgnore": [
     "node_modules"

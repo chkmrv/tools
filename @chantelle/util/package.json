@@ -53,9 +53,7 @@
     "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
     "build": "backpack build",
     "test": "ava",
-    "prepublish": "echo \"noop\"",
-    "prepare": "echo \"noop\"",
-    "precommit": "yon run lint && yon test && flow-typed install"
+    "postinstall": "if-env NODE_ENV=production && echo \"production, skipping\" || flow-typed update"
   },
   "license": "MIT",
   "repository": {

@@ -21,10 +21,7 @@
     "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
     "test": "ava",
     "pretest": "yon run build",
-    "build": "backpack build",
-    "prepublish": "yon run build",
-    "prepare": "echo \"noop\"",
-    "precommit": "yon run lint && yon test"
+    "build": "backpack build"
   },
   "eslintConfig": {
     "extends": [

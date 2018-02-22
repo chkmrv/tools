@@ -4,14 +4,7 @@
   "description": "Chantelle common Eslint rules for CommonJs",
   "main": "./index.js",
   "scripts": {
-    "lint": "eslint ./ --fix",
-    "build": "echo \"noop\"",
-    "start": "nodemon --exec \"yon run build\"",
-    "test": "echo \"noop\"",
-    "pretest": "yon run build",
-    "prepublish": "echo \"noop\"",
-    "prepare": "echo \"noop\"",
-    "precommit": "yon run lint && yon test"
+    "lint": "eslint ./ --fix"
   },
   "license": "MIT",
   "dependencies": {

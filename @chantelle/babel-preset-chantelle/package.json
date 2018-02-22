@@ -4,13 +4,7 @@
   "description": "Common Babel preset for Groupe Chantelle",
   "main": "./index.js",
   "scripts": {
-    "lint": "eslint ./src --fix",
-    "build": "echo \"noop\"",
-    "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
-    "test": "echo \"noop\"",
-    "prepublish": "echo \"noop\"",
-    "prepare": "echo \"noop\"",
-    "precommit": "yon run lint && yon test"
+    "lint": "eslint ./src --fix"
   },
   "repository": {
     "type": "git",

@@ -3,8 +3,7 @@
   "private": true,
   "description": "Common tools for Groupe Chantelle",
   "scripts": {
-    "postinstall": "yon run bootstrap",
-    "reinstall": "yon run purge && $(yarn || npm install)",
+    "postinstall": "yarn bootstrap",
     "bootstrap": "lerna bootstrap",
     "start": "lerna run start --stream --parallel",
     "test": "lerna run test --parallel --stream",
@@ -12,10 +11,16 @@
     "lint": "lerna run lint --stream --parallel",
     "exec": "lerna exec --stream --parallel",
     "lint-watch": "lerna run lint --stream --parallel -- --watch",
-    "purge": "lerna clean --yes && rm -rf ./node_modules && rm -rf ./package-lock.json && rm -rf ./**/**/package-lock.json",
+    "purge-lock-files": "rm -rf ./package-lock.json && rm -rf ./yarn.lock && rm -rf ./**/**/package-lock.json && rm -rf ./**/**/yarn.lock",
+    "purge-modules": "lerna clean --yes && rm -rf ./node_modules & rm -rf ./tools & wait",
+    "purge": "yarn purge-modules & yarn purge-lock-files & wait",
+    "reinstall": "yarn purge && yarn",
     "clean": "lerna clean --yes",
-    "publish": "lerna publish",
-    "precommit": "yon run lint && yon test"
+    "publish-all": "lerna publish",
+    "postmerge": "yarn && yarn bootstrap",
+    "precommit": "yarn lint",
+    "prepublishOnly": "yarn test",
+    "prepush": "yarn test"
   },
   "repository": {
     "type": "git",
@@ -34,10 +39,10 @@
   "license": "MIT",
   "dependencies": {
     "lerna": "^2.9.0",
-    "npm-run-all": "^4.1.2",
-    "yarn-or-npm": "^2.0.4"
+    "npm-run-all": "^4.1.2"
   },
   "devDependencies": {
-    "husky": "^0.14.3"
+    "husky": "^0.14.3",
+    "if-env": "^1.0.4"
   }
 }

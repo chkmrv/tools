@@ -58,10 +58,7 @@
     "pretest": "yon run build",
     "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
     "lint": "eslint ./src --fix",
-    "build": "backpack build",
-    "prepublish": "echo \"noop\"",
-    "prepare": "echo \"noop\"",
-    "precommit": "yon run lint && yon test"
+    "build": "backpack build"
   },
   "eslintConfig": {
     "extends": [

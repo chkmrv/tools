@@ -8,10 +8,7 @@
     "build": "backpack build",
     "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
     "test": "ava",
-    "pretest": "yon run build",
-    "prepublish": "echo \"noop\"",
-    "prepare": "echo \"noop\"",
-    "precommit": "yon run lint && yon test"
+    "pretest": "yon run build"
   },
   "dependencies": {
     "@chantelle/scripts": "^0.0.1-y.5",
