@@ -17,11 +17,7 @@
     "run-gulp": "bin/run-gulp.js"
   },
   "scripts": {
-    "lint": "eslint --fix ./src",
-    "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
-    "test": "ava",
-    "pretest": "yon run build",
-    "build": "backpack build"
+    "lint": "eslint --fix ./src"
   },
   "eslintConfig": {
     "extends": [
