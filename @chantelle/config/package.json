@@ -1,6 +1,6 @@
 {
   "name": "@chantelle/config",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "./build/main.js",
   "description": "WIP - Stores default common configurations",
   "scripts": {
@@ -8,8 +8,8 @@
     "test": "jest --env=jsdom"
   },
   "dependencies": {
-    "@chantelle/scripts": "^0.1.1",
-    "@chantelle/util": "^0.1.1",
+    "@chantelle/scripts": "^0.1.2",
+    "@chantelle/util": "^0.1.2",
     "autoprefixer": "^7.1.6",
     "babel-eslint": "^8.0.3",
     "babel-loader": "7.1.2",
@@ -45,9 +45,9 @@
     "./get*.js"
   ],
   "devDependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.1.1",
-    "@chantelle/eslint-config-chantelle": "^0.1.1",
-    "@chantelle/eslint-plugin-chantelle": "^0.1.1",
+    "@chantelle/babel-preset-chantelle": "^0.1.2",
+    "@chantelle/eslint-config-chantelle": "^0.1.2",
+    "@chantelle/eslint-plugin-chantelle": "^0.1.2",
     "babel-core": "^6.26.0",
     "babel-register": "^6.26.0",
     "backpack-core-yarn-workspaces": "^0.6.3",
