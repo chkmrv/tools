@@ -1,9 +1,9 @@
 {
   "name": "@chantelle/scripts",
   "main": "./build/main.js",
-  "version": "0.0.1-y.4",
+  "version": "0.1.0",
   "license": "MIT",
-  "description": "Common dev ops scripts for Chantelle projects",
+  "description": "WIP - Common dev ops scripts for Chantelle projects",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:GroupeChantelle/tools.git"
@@ -17,14 +17,7 @@
     "run-gulp": "bin/run-gulp.js"
   },
   "scripts": {
-    "lint": "eslint --fix ./src",
-    "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
-    "test": "ava",
-    "pretest": "yon run build",
-    "build": "backpack build",
-    "prepublish": "yon run build",
-    "prepare": "echo \"noop\"",
-    "precommit": "yon run lint && yon test"
+    "lint": "eslint --fix ./src"
   },
   "eslintConfig": {
     "extends": [
@@ -38,10 +31,10 @@
   },
   "dependencies": {
     "@babel/register": "^7.0.0-beta.32",
-    "@chantelle/config": "^0.0.1-y.4",
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.4",
-    "@chantelle/gulp-tasks": "^0.0.1-y.4",
-    "@chantelle/util": "^0.0.1-y.4",
+    "@chantelle/config": "^0.1.0",
+    "@chantelle/eslint-plugin-chantelle": "^0.1.0",
+    "@chantelle/gulp-tasks": "^0.1.0",
+    "@chantelle/util": "^0.1.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
     "dotenv": "^4.0.0",
@@ -58,11 +51,11 @@
     "yarn-or-npm": "^2.0.4"
   },
   "devDependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.0.1-y.4",
-    "@chantelle/eslint-config-chantelle": "^0.0.1-y.4",
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.4",
+    "@chantelle/babel-preset-chantelle": "^0.1.0",
+    "@chantelle/eslint-config-chantelle": "^0.1.0",
+    "@chantelle/eslint-plugin-chantelle": "^0.1.0",
     "ava": "^0.24.0",
-    "backpack-core": "^0.4.3",
+    "backpack-core-yarn-workspaces": "^0.6.3",
     "eslint": "^4.11.0",
     "eslint-config-cleanjs": "^4.0.0",
     "eslint-config-react-app": "^2.0.1",

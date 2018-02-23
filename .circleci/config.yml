@@ -1,6 +1,6 @@
-# Javascript Node CircleCI 2.0 configuration file
+# CircleCI 2.0 configuration file
 #
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+# https://circleci.com/docs/2.0
 
 version: 2
 machine:
@@ -8,29 +8,25 @@ machine:
 jobs:
   build:
     docker:
-      - image: circleci/node:8
-
+      - image: circleci/node:9
+    environment:
+      - CI: true
     steps:
       - checkout
-
       - run:
           name: Save checksum of yarn.lock
           command: git log --pretty=format:'%H' -n 1 -- "yarn.lock" > /tmp/tools-checksum
-
       - restore_cache:
           keys:
             - chantelle-tools-{{ .Branch }}-{{ checksum "/tmp/tools-checksum" }}
             - chantelle-tools-{{ .Branch }}
             - chantelle-tools-master
             - chantelle-tools-
-
-      - run: yarn install
-
+      - run: yarn
+      - run: yarn bootstrap
       - save_cache:
           key: chantelle-tools-{{ .Branch }}-{{ checksum "/tmp/tools-checksum" }}
           paths:
             - ./node_modules
-
       - run: yarn build
-
       - run: yarn test

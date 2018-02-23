@@ -1,27 +1,20 @@
 {
   "name": "@chantelle/eslint-config-chantelle",
-  "version": "0.0.1-y.4",
+  "version": "0.1.0",
   "description": "Chantelle common Eslint rules",
   "main": "./index.js",
   "scripts": {
-    "lint": "eslint ./ --fix",
-    "build": "echo \"noop\"",
-    "start": "nodemon --exec \"yon run build\"",
-    "test": "echo \"noop\"",
-    "pretest": "yon run build",
-    "prepublish": "echo \"noop\"",
-    "prepare": "echo \"noop\"",
-    "precommit": "yon run lint && yon test"
+    "lint": "eslint ./ --fix"
   },
   "license": "MIT",
   "dependencies": {
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.4",
+    "@chantelle/eslint-plugin-chantelle": "^0.1.0",
     "babel-eslint": "^8.0.3",
     "empty": "^0.10.1",
     "yarn-or-npm": "^2.0.4"
   },
   "devDependencies": {
-    "@chantelle/eslint-config-chantelle-commonjs": "^0.0.1-y.4",
+    "@chantelle/eslint-config-chantelle-commonjs": "^0.1.0",
     "eslint": "^4.12.1",
     "eslint-config-cleanjs": "^4.0.0",
     "eslint-config-react-app": "^2.0.1",

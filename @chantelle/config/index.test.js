@@ -1,6 +1,5 @@
-/* eslint fp/no-unused-expression:0 */
+/* eslint fp/no-unused-expression:0, fp/no-nil:0, fp/no-unused-expression:0, better/explicit-return:0 */
 
-import test from 'ava'
 import {
   env,
   paths,
@@ -10,16 +9,19 @@ import {
   webpackDevServerConfig,
   webpackProductionConfig,
   webpackDevelopmentConfig,
-} from './'
+} from './src'
 
-test('exports correct types', t =>
-  [
-    [env, 'object'],
-    [paths, 'object'],
-    [jestCssTransform, 'function'],
-    [jestFileTransform, 'function'],
-    [getClientEnvironment, 'function'],
-    [webpackDevServerConfig, 'function'],
-    [webpackProductionConfig, 'function'],
-    [webpackDevelopmentConfig, 'function'],
-  ].map(([exported, type]) => t.is(typeof exported, type)))
+describe('@chantelle/config', () => {
+  test('exports correct types', () => {
+    ;[
+      [env, 'object'],
+      [paths, 'object'],
+      [jestCssTransform, 'function'],
+      [jestFileTransform, 'function'],
+      [getClientEnvironment, 'function'],
+      [webpackDevServerConfig, 'function'],
+      [webpackProductionConfig, 'function'],
+      [webpackDevelopmentConfig, 'function'],
+    ].map(([exported, type]) => expect(typeof exported).toBe(type))
+  })
+})

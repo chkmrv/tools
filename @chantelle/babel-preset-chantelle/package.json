@@ -1,16 +1,10 @@
 {
   "name": "@chantelle/babel-preset-chantelle",
-  "version": "0.0.1-y.4",
+  "version": "0.1.0",
   "description": "Common Babel preset for Groupe Chantelle",
   "main": "./index.js",
   "scripts": {
-    "lint": "eslint ./src --fix",
-    "build": "echo \"noop\"",
-    "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
-    "test": "echo \"noop\"",
-    "prepublish": "echo \"noop\"",
-    "prepare": "echo \"noop\"",
-    "precommit": "yon run lint && yon test"
+    "lint": "eslint ./src --fix"
   },
   "repository": {
     "type": "git",
@@ -49,7 +43,7 @@
     "flow-runtime": "^0.16.0"
   },
   "devDependencies": {
-    "@chantelle/eslint-plugin-chantelle": "^0.0.1-y.4",
+    "@chantelle/eslint-plugin-chantelle": "^0.1.0",
     "babel-eslint": "^8.0.3",
     "eslint": "^4.12.0",
     "eslint-config-cleanjs": "^4.0.0",

@@ -1,8 +1,6 @@
 {
   "lerna": "2.9.0",
-  "packages": [
-    "@chantelle/*"
-  ],
-  "version": "0.0.1-y.4",
-  "npmClient": "yarn"
+  "version": "0.1.0",
+  "npmClient": "yarn",
+  "useWorkspaces": true
 }
