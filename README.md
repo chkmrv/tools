@@ -4,49 +4,57 @@
 
 Common tools for Groupe Chantelle
 
+This package consists of
+- [@chantelle/util](https://www.npmjs.com/package/@chantelle/util)
+- [@chantelle/babel-preset-chantelle](https://www.npmjs.com/package/babel-preset-chantelle)
+- [@chantelle/eslint-config-chantelle](https://www.npmjs.com/package/@chantelle/eslint-config-chantelle)
+- [@chantelle/eslint-plugin-chantelle](https://www.npmjs.com/package/@chantelle/eslint-plugin-chantelle)
+- [@chantelle/eslint-config-chantelle-commonjs](https://www.npmjs.com/package/@chantelle/eslint-config-chantelle-commonjs)
+- [@chantelle/eslint-config-legacy](https://www.npmjs.com/package/@chantelle/eslint-config-legacy)
+- [@chantelle/scripts (WIP)](https://www.npmjs.com/package/@chantelle/scripts)
+- [@chantelle/config (WIP)](https://www.npmjs.com/package/@chantelle/config)
+- [@chantelle/gulp-tasks (WIP)](https://www.npmjs.com/package/@chantelle/gulp-tasks)
+
 
 ## Installation
 
-- ### `npm i`
+- ### `yarn && yarn bootstrap`
 
 
 ## Commands
 
-- ### `npm start`
+- ### `yarn start`
 Start deployment on all modules
 
-- ### `npm test`
+- ### `yarn test`
 Start test process on all modules
 
-- ### `npm run publish`
-Set version, tag git version and after publish all modules to npm
-
-- ### `npm run build`
-Start build process on all modules
-
-- ### `npm run lint`
-Start lint process on all modules
-
-- ### `npm run lint-watch`
-Start lint process on all modules with watching option
-
-- ### `npm run reinstall`
-Purges all modules and installs everything
-
-- ### `npm run bootstrap`
+- ### `yarn bootstrap`
 Installs all submodules and links them together
 
+- ### `yarn publish-all` or `yarn run publish`
+Set version, tag git version and after publish all modules to npm
+
+- ### `yarn build`
+Start build process on all modules
+
+- ### `yarn lint`
+Start lint process on all modules
+
+- ### `yarn reinstall`
+Purges all modules and installs everything
+
 - ### `npm run reinstall`
 Purges all modules and installs everything
 
-- ### `npm run exec <command>`
+- ### `yarn run exec <command>`
 Run a command in all modules
 
-- ### `npm run purge`
+- ### `yarn purge`
 Purge all installed modules
 
-- ### `npm run clean`
+- ### `yarn clean`
 Clean all modules installed in submodules
 
-- ### `npm run purge`
+- ### `yarn purge`
 Purge all installed modules and lock files
