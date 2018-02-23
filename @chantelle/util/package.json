@@ -5,6 +5,7 @@
   "dependencies": {
     "@nod/debug-with-package-name": "^1.0.0",
     "empty": "^0.10.1",
+    "if-env": "^1.0.4",
     "immutable": "^3.8.2",
     "ramda": "^0.25.0",
     "yarn-or-npm": "^2.0.4"
@@ -16,7 +17,7 @@
     "ava": "^0.24.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
-    "backpack-core": "^0.4.3",
+    "backpack-core-yarn-workspaces": "^0.6.3",
     "eslint": "^4.12.1",
     "eslint-config-cleanjs": "^4.0.0",
     "eslint-config-react-app": "^2.0.1",

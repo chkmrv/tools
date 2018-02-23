@@ -1,33 +1,36 @@
 /* eslint fp/no-mutation:0, import/no-commonjs:0 */
 
-process.env.BABEL_ENV = process.env.BABEL_ENV || "development";
+process.env.BABEL_ENV =
+  process.env.BABEL_ENV || process.env.NODE_ENV || 'development'
 
-module.exports = {
+const preset = {
   plugins: [
     [
-      require.resolve("babel-plugin-flow-runtime"),
+      'flow-runtime',
       {
         assert: true,
-        annotate: true
-      }
+        annotate: true,
+      },
     ],
-    require.resolve("babel-plugin-transform-decorators-legacy"),
-    require.resolve("babel-plugin-add-module-exports")
+    'transform-decorators-legacy',
+    'add-module-exports',
   ],
   presets: [
-    require.resolve("babel-preset-flow-runtime"),
-    require.resolve("babel-preset-stage-2"),
-    require.resolve("babel-preset-react"),
-    require.resolve("babel-preset-react-app"),
+    'flow-runtime',
+    'stage-2',
+    'react',
+    'react-app',
     [
-      require.resolve("babel-preset-env"),
+      'env',
       {
         useBuiltIns: true,
         targets: {
-          browsers: ["last 2 versions"],
-          node: "current"
-        }
-      }
-    ]
-  ]
-};
+          browsers: ['last 2 versions'],
+          node: 'current',
+        },
+      },
+    ],
+  ],
+}
+
+module.exports = preset
