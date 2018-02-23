@@ -1,14 +1,14 @@
 {
   "name": "@chantelle/eslint-plugin-chantelle",
   "main": "./build/main.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org:editionlingerie/chantelle-tools.git"
   },
   "dependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.1.0",
-    "@chantelle/util": "^0.1.0",
+    "@chantelle/babel-preset-chantelle": "^0.1.1",
+    "@chantelle/util": "^0.1.1",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
     "empty": "^0.10.1",

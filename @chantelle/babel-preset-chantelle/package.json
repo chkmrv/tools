@@ -1,6 +1,6 @@
 {
   "name": "@chantelle/babel-preset-chantelle",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Common Babel preset for Groupe Chantelle",
   "main": "./index.js",
   "scripts": {
@@ -43,7 +43,7 @@
     "flow-runtime": "^0.16.0"
   },
   "devDependencies": {
-    "@chantelle/eslint-plugin-chantelle": "^0.1.0",
+    "@chantelle/eslint-plugin-chantelle": "^0.1.1",
     "babel-eslint": "^8.0.3",
     "eslint": "^4.12.0",
     "eslint-config-cleanjs": "^4.0.0",

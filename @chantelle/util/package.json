@@ -1,7 +1,7 @@
 {
   "name": "@chantelle/util",
   "main": "./build/main.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "dependencies": {
     "@nod/debug-with-package-name": "^1.0.0",
     "empty": "^0.10.1",
@@ -11,9 +11,9 @@
     "yarn-or-npm": "^2.0.4"
   },
   "devDependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.1.0",
-    "@chantelle/eslint-config-chantelle": "^0.1.0",
-    "@chantelle/eslint-plugin-chantelle": "^0.1.0",
+    "@chantelle/babel-preset-chantelle": "^0.1.1",
+    "@chantelle/eslint-config-chantelle": "^0.1.1",
+    "@chantelle/eslint-plugin-chantelle": "^0.1.1",
     "ava": "^0.24.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
