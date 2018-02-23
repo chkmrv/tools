@@ -55,11 +55,7 @@
     ]
   },
   "scripts": {
-    "test": "ava",
-    "pretest": "yon run build",
-    "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
-    "lint": "eslint ./src --fix",
-    "build": "backpack build"
+    "lint": "eslint ./src --fix"
   },
   "eslintConfig": {
     "extends": [
