@@ -1,8 +1,29 @@
 // @flow
 import { debugWithPackageName } from '@nod/debug-with-package-name'
-import { pipe as pipeR, type, tap } from 'ramda'
+import { tap, pipe as pipeRamda } from 'ramda'
+import { pipe as pipeSanctuary } from 'sanctuary'
 
-import type { Map as MapType } from 'immutable'
+import type { MapType, RecordOf } from 'immutable'
+
+export type Primitive =
+  | string
+  | boolean
+  | number
+  | Symbol
+  | Object
+  | Array<Primitive>
+  | Function
+
+export const valueOrDefaultValue = (value: any, defaultValue: any) =>
+  value !== undefined ? value : defaultValue
+
+export type Pipe = (Array<Function>) => Function => Primitive => Primitive
+
+export const pipe: Pipe = (...functions) => (arg: any) =>
+  functions.reduce(
+    (value: any, fn: Function): any => valueOrDefaultValue(fn(value), value),
+    arg
+  )
 
 export const createNumberSequence = (length: number): Array<*> => [
   ...Array(length).keys(),
@@ -11,19 +32,10 @@ export const createNumberSequence = (length: number): Array<*> => [
 export const random = (max: number = 9999, min: number = 1): number =>
   Math.floor(Math.random() * (max - min + 1)) + min
 
-export const valueOrDefaultValue = (value: any, defaultValue: any) =>
-  value !== undefined ? value : defaultValue
-
 // eslint-disable-next-line fp/no-nil, better/explicit-return
 export const thrower = (error: Error) => {
   throw error // eslint-disable-line fp/no-throw
 }
-
-export const pipe = (...functions: Array<Function>): Function => (arg: any) =>
-  functions.reduce(
-    (value: any, fn: Function): any => valueOrDefaultValue(fn(value), value),
-    arg,
-  )
 
 export const compareIntegers = (a: number, b: number): number =>
   a > b ? -1 : b > a ? 1 : 0
@@ -36,20 +48,20 @@ export const objectMap = (objectToIterate: Object, fn: Function): Object =>
         [key]: fn(value, key),
       },
     }),
-    objectToIterate,
+    objectToIterate
   )
 
 export const objectWithBooleansFromStrings = (
-  objectToIterate: Object,
+  objectToIterate: Object
 ): Object =>
   objectMap(
     objectToIterate,
-    pipeR(
+    pipeRamda(
       // eslint-disable-next-line fp/no-nil
       value => (value === 'true' ? true : undefined),
       // eslint-disable-next-line fp/no-nil
-      value => (value === 'false' ? false : undefined),
-    ),
+      value => (value === 'false' ? false : undefined)
+    )
   )
 
 export const objectWithoutUndefinedValues = (objectToIterate: Object): Object =>
@@ -61,27 +73,21 @@ export const objectWithoutUndefinedValues = (objectToIterate: Object): Object =>
             ...accumulator,
             ...{ [key]: value },
           },
-    {},
+    {}
   )
-
-export const debug = (
-  variable?: any,
-  description?: string = ' %O',
-  debug = debugWithPackageName(),
-): any => tap(variable => debug(description, variable), variable)
 
 export const arrayToObjectEntries = (
   entry: Array<*>,
   formatter: Function = (value: any, key: string | number) => ({
     [key]: value,
-  }),
+  })
 ) =>
   entry.reduce(
     (accumulator, next, key) => ({
       ...accumulator,
       ...formatter(next, key),
     }),
-    formatter(entry[0], 0),
+    formatter(entry[0], 0)
   )
 
 export const objectFilterKeys = (object: Object, filter: Function): Object =>
@@ -92,7 +98,7 @@ export const objectFilterKeys = (object: Object, filter: Function): Object =>
         ...object,
         [key]: object[key],
       }),
-      {},
+      {}
     )
 
 export const clone = (array: Array<any>): Array<any> => [...array]
@@ -104,54 +110,57 @@ export const push = (array: Array<any>): Function => (
 export const pop = (array: Array<any>): Array<any> => array.slice(0, -1)
 
 export const unshift = (array: Array<any>): Function => (
-  element: any,
+  element: any
 ): Array<any> => [element, ...array]
 
 export const shift = (array: Array<any>): Array<any> => array.slice(1)
 
 export const sort = (fn: Function): Function => (
-  array: Array<any>,
+  array: Array<any>
 ): Array<any> => [...array]
 
 //eslint-disable-next-line fp/no-mutating-methods
 export const reverse = (array: Array<any>): Array<any> => clone(array).reverse()
 
 export const remove = (array: Array<any>): Function => (
-  i: number,
+  i: number
 ): Array<any> =>
   //eslint-disable-next-line fp/no-mutating-methods
   clone(array).splice(i, 1)
 
 export const splice = (array: Array<any>): Function => (
   position: number,
-  amount: number,
+  amount: number
   //eslint-disable-next-line fp/no-mutating-methods
 ) => clone(array).splice(position, amount)
 
-//eslint-disable-next-line fp/no-mutating-methods
-export const takeLast = (array: Array<any>): any => clone(array).pop()
-
-export const debugReducer = (prefix?: string = '') => (
+export const debugReducer = (prefix: ?string = '') => (
   key: string | number,
   action: any,
-  debug = debugWithPackageName(prefix),
-) => debug(key.concat(' %O'), action)
+  debug: ?Function = debugWithPackageName(prefix)
+) => debug(`${key}`.concat(' %O'), action)
+
+export const debug = (
+  variable: ?Primitive,
+  description?: string | number = ' %O',
+  debug: ?Function = debugWithPackageName()
+): any => tap(variable => debug(description, variable), variable)
 
 export const reducer = (...reducers: Array<Array<any>>): Function => (
   // state: MapType,
   state,
-  debug = debugReducer(),
+  debug: ?Function = debugReducer('reducer')
   // ): MapType =>
 ): any =>
   [...reducers].reduce(
     (currentState, [key: string | number, action: any]) =>
       currentState.set(
         key,
-        pipeR(
+        pipe(
           (action: any) =>
-            type(action) === 'Function' ? action(currentState) : action,
-          (action: any) => tap(action => debug(key, action), action),
-        )(action),
+            typeof action === 'Function' ? action(currentState) : action,
+          (action: any) => tap(action => debug(key, action), action)
+        )(action)
       ),
-    state,
+    state
   )
