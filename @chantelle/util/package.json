@@ -1,6 +1,6 @@
 {
   "name": "@chantelle/util",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "module": "./src/index.js",
   "main": "./build/main.js",
   "dependencies": {
@@ -10,7 +10,7 @@
     "sanctuary": "^0.14.1"
   },
   "devDependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.1.2",
+    "@chantelle/babel-preset-chantelle": "^0.2.0",
     "babel-core": "^6.26.0",
     "backpack-core-yarn-workspaces": "^0.6.3",
     "cross-env": "^5.1.3",
