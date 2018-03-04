@@ -3,9 +3,6 @@
   "version": "0.1.2",
   "description": "Chantelle common Eslint rules",
   "main": "./index.js",
-  "scripts": {
-    "lint": "eslint ./ --fix"
-  },
   "license": "MIT",
   "dependencies": {
     "@chantelle/eslint-plugin-chantelle": "^0.1.2",
@@ -14,6 +11,8 @@
     "yarn-or-npm": "^2.0.4"
   },
   "devDependencies": {
+    "flow-bin": "^0.66.0",
+    "flow-runtime": "^0.16.0",
     "@chantelle/eslint-config-chantelle-commonjs": "^0.1.2",
     "eslint": "^4.12.1",
     "eslint-config-cleanjs": "^4.0.0",

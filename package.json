@@ -1,28 +1,35 @@
 {
   "name": "@chantelle/tools",
   "private": true,
-  "description": "Common tools for Groupe Chantelle",
+  "description": "Monorepo of common tools for Groupe Chantelle",
   "scripts": {
-    "bootstrap-workaround": "lerna run yarn && lerna link && lerna add empty -D",
-    "postinstall": "yarn bootstrap-workaround",
+    "bootstrap-safe": "node ./safe-lerna-bootstrap.js",
+    "postinstall": "if-env NODE_ENV=production && yarn postinstall-production || yarn postinstall-dev",
+    "postinstall-dev": "yarn bootstrap-safe && (flow-mono create-symlinks ./.flowconfig || true) && yarn install-flow-typed && yarn tools-link",
+    "postinstall-production": "echo \"production, skipping...\"",
+    "install-flow-typed": "flow-mono install-types",
     "bootstrap": "lerna bootstrap",
     "start": "lerna run start --stream --parallel",
     "test": "lerna run test --parallel --stream",
     "build": "lerna run build --stream --parallel",
-    "lint": "lerna run lint --stream --parallel",
-    "exec": "lerna exec --stream --parallel",
+    "lint": "eslint --fix ./",
+    "runAll": "lerna exec --stream --parallel",
     "lint-watch": "lerna run lint --stream --parallel -- --watch",
-    "purge-lock-files": "rm -rf ./package-lock.json && rm -rf ./yarn.lock && rm -rf ./**/**/package-lock.json && rm -rf ./**/**/yarn.lock",
-    "purge-modules": "lerna clean --yes && rm -rf ./node_modules & rm -rf ./tools & wait",
-    "purge": "yarn purge-modules & yarn purge-lock-files & wait",
+    "purge-lock-files": "rm -rf ./package-lock.json && rm -rf ./yarn.lock && yarn runAll \"rm -rf ./package-lock.json && rm -rf ./yarn.lock\"",
+    "purge-flow-typed-npm": "yarn runAll \"rm -rf ./flow-typed/npm\" || true && rm -rf ./flow-typed/npm",
+    "purge-modules": "lerna clean --yes && rm -rf ./node_modules",
+    "purge": "yarn purge-lock-files && yarn purge-flow-typed-npm && yarn purge-modules",
     "reinstall": "yarn purge && yarn",
     "clean": "lerna clean --yes",
     "publish-all": "lerna publish",
     "publish": "lerna publish",
     "postmerge": "yarn && yarn bootstrap",
     "precommit": "yarn lint",
-    "prepublishOnly": "yarn test",
-    "prepush": "yarn test"
+    "prepublishOnly": "yarn build && yarn test",
+    "prepush": "yarn test",
+    "tools-link-global": "yarn runAll \"yarn link\" --scope=\"@chantelle/babel-preset-chantelle\" --scope=\"@chantelle/eslint-config-chantelle\" --scope=\"@chantelle/eslint-plugin-chantelle\"",
+    "tools-link-to-root": "yarn link @chantelle/babel-preset-chantelle && yarn link @chantelle/eslint-config-chantelle && yarn link @chantelle/eslint-plugin-chantelle",
+    "tools-link": "npm-run-all tools-link-*"
   },
   "repository": {
     "type": "git",
@@ -40,14 +47,27 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "if-env": "^1.0.4",
     "lerna": "^2.9.0",
     "npm-run-all": "^4.1.2"
   },
   "devDependencies": {
-    "husky": "^0.14.3",
-    "if-env": "^1.0.4"
+    "flow-bin": "^0.66.0",
+    "flow-mono-cli": "^1.3.0",
+    "flow-runtime": "^0.16.0",
+    "flow-typed": "^2.3.0",
+    "glow": "^1.2.2",
+    "husky": "^0.14.3"
   },
   "workspaces": [
     "@chantelle/*"
-  ]
+  ],
+  "eslintConfig": {
+    "extends": [
+      "@chantelle/chantelle"
+    ]
+  },
+  "babel": {
+    "presets": ["@chantelle/chantelle"]
+  } 
 }

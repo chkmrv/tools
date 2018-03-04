@@ -3,9 +3,6 @@
   "version": "0.1.2",
   "description": "Common Eslint rules for Legacy projects of Chantelle",
   "main": "./index.js",
-  "scripts": {
-    "lint": "eslint ./ --fix"
-  },
   "license": "MIT",
   "dependencies": {
     "@chantelle/eslint-plugin-chantelle": "^0.1.2",
@@ -27,6 +24,9 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.5.1",
+    "flow-bin": "^0.66.0",
+    "flow-runtime": "^0.17.0",
+    "flow-typed": "^2.3.0",
     "husky": "^0.14.3",
     "nodemon": "^1.12.1",
     "prettier": "^1.8.2"

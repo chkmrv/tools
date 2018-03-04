@@ -11,9 +11,10 @@ This package consists of
 - [@chantelle/eslint-plugin-chantelle](https://www.npmjs.com/package/@chantelle/eslint-plugin-chantelle)
 - [@chantelle/eslint-config-chantelle-commonjs](https://www.npmjs.com/package/@chantelle/eslint-config-chantelle-commonjs)
 - [@chantelle/eslint-config-legacy](https://www.npmjs.com/package/@chantelle/eslint-config-legacy)
-- [@chantelle/scripts (WIP)](https://www.npmjs.com/package/@chantelle/scripts)
-- [@chantelle/config (WIP)](https://www.npmjs.com/package/@chantelle/config)
-- [@chantelle/gulp-tasks (WIP)](https://www.npmjs.com/package/@chantelle/gulp-tasks)
+  - WIP
+    - [@chantelle/scripts](https://www.npmjs.com/package/@chantelle/scripts)
+    - [@chantelle/config](https://www.npmjs.com/package/@chantelle/config)
+    - [@chantelle/gulp-tasks](https://www.npmjs.com/package/@chantelle/gulp-tasks)
 
 
 ## Installation
@@ -47,7 +48,7 @@ Purges all modules and installs everything
 - ### `npm run reinstall`
 Purges all modules and installs everything
 
-- ### `yarn run exec <command>`
+- ### `yarn runAll <command>`
 Run a command in all modules
 
 - ### `yarn purge`

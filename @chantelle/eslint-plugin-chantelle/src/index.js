@@ -13,7 +13,7 @@ export const pluginsDependencies = reduce(
     }
     return plugins
   },
-  [],
+  []
 )
 
 export const chantelleRules = {
@@ -22,7 +22,7 @@ export const chantelleRules = {
     2,
     {
       singleQuote: true,
-      trailingComma: 'all',
+      trailingComma: 'es5',
       parser: 'flow',
       semi: false,
     },
@@ -39,14 +39,6 @@ export const chantelleRules = {
 
   'array-callback-return': 2,
   'arrow-parens': [2, 'as-needed'],
-  'comma-dangle': [2, 'always-multiline'],
-  'comma-style': [
-    2,
-    'last',
-    {
-      exceptions: { ArrayExpression: true, ObjectExpression: true },
-    },
-  ],
 
   'new-cap': 0,
   'key-spacing': [
@@ -62,9 +54,14 @@ export const propsToPick = ['env', 'parserOptions', 'root', 'settings']
 
 export const getConfigBase = () => ({
   parser: 'babel-eslint',
-  extends: ['plugin:flowtype/recommended', 'plugin:jest/recommended'],
+  extends: [
+    'prettier',
+    'plugin:flowtype/recommended',
+    'plugin:jest/recommended',
+  ],
   plugins: [
-    // '@chantelle/chantelle',
+    'prettier',
+    '@chantelle/chantelle',
     'jest',
     'babel',
     'flowtype',
@@ -73,7 +70,6 @@ export const getConfigBase = () => ({
     'jsx-a11y',
     'react',
     'better',
-    'prettier',
   ],
   env: {
     es6: true,
@@ -103,7 +99,7 @@ const getConfigRules = config =>
 
       return result
     },
-    {},
+    {}
   )
 
 const extendConfig = (config, ext) => {
