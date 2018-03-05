@@ -8,6 +8,11 @@
     "url": "git+ssh://git@bitbucket.org:editionlingerie/chantelle-tools.git"
   },
   "dependencies": {
+    "@chantelle/babel-preset-chantelle": "^0.2.0",
+    "@chantelle/eslint-config-chantelle": "^0.2.0",
+    "@chantelle/eslint-config-legacy": "^0.2.0",
+    "@chantelle/eslint-plugin-chantelle": "^0.2.0",
+    "@chantelle/util": "^0.3.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
     "empty": "^0.10.1",
