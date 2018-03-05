@@ -1,10 +1,9 @@
 // @flow
 import { debugWithPackageName } from '@nod/debug-with-package-name'
-import { tap, pipe as pipeRamda } from 'ramda'
-import { pipe as pipeSanctuary } from 'sanctuary'
+import { type, tap, pipe as pipeRamda } from 'ramda'
+import { pipe as pipeSanctuary, Nothing } from 'sanctuary'
 
 import type { MapType, RecordOf } from 'immutable'
-
 export type Primitive =
   | string
   | boolean
@@ -12,18 +11,15 @@ export type Primitive =
   | Symbol
   | Object
   | Array<Primitive>
+  | Promise<any>
   | Function
 
 export const valueOrDefaultValue = (value: any, defaultValue: any) =>
   value !== undefined ? value : defaultValue
 
-export type Pipe = (Array<Function>) => Function => Primitive => Primitive
-
-export const pipe: Pipe = (...functions) => (arg: any) =>
-  functions.reduce(
-    (value: any, fn: Function): any => valueOrDefaultValue(fn(value), value),
-    arg
-  )
+export const pipe = (...args: Array<Function>): Function => (
+  value: Primitive
+): Primitive => pipeSanctuary([...args], value)
 
 export const createNumberSequence = (length: number): Array<*> => [
   ...Array(length).keys(),
@@ -146,21 +142,21 @@ export const debug = (
   debug: ?Function = debugWithPackageName()
 ): any => tap(variable => debug(description, variable), variable)
 
+export type ImmutableState = MapType | RecordOf<any>
 export const reducer = (...reducers: Array<Array<any>>): Function => (
-  // state: MapType,
-  state,
-  debug: ?Function = debugReducer('reducer')
-  // ): MapType =>
+  state: ImmutableState,
+  reducerDebug?: Function = debugReducer('reducer')
 ): any =>
   [...reducers].reduce(
-    (currentState, [key: string | number, action: any]) =>
-      currentState.set(
-        key,
-        pipe(
-          (action: any) =>
-            typeof action === 'Function' ? action(currentState) : action,
-          (action: any) => tap(action => debug(key, action), action)
-        )(action)
-      ),
+    (currentState: ImmutableState, [key: string | number, action: Primitive]) =>
+      pipe(
+        (action: Primitive): Primitive => action,
+        (action: Primitive): any =>
+          type(action) === 'Function' ? action(currentState) : action,
+        (action: any): Primitive =>
+          typeof action === 'undefined' ? Nothing : action,
+        tap(action => reducerDebug(key, action)),
+        action => currentState.set(key, action)
+      )(action),
     state
   )
