@@ -1,21 +1,21 @@
 {
   "name": "@chantelle/eslint-config-chantelle",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "Chantelle common Eslint rules",
   "main": "./index.js",
   "license": "MIT",
   "dependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.2.0",
-    "@chantelle/eslint-config-chantelle": "^0.2.0",
-    "@chantelle/eslint-config-legacy": "^0.2.0",
-    "@chantelle/eslint-plugin-chantelle": "^0.2.0",
-    "@chantelle/util": "^0.3.0",
+    "@chantelle/babel-preset-chantelle": "^0.3.1",
+    "@chantelle/eslint-config-chantelle": "^0.3.1",
+    "@chantelle/eslint-config-legacy": "^0.3.1",
+    "@chantelle/eslint-plugin-chantelle": "^0.3.1",
+    "@chantelle/util": "^0.3.1",
     "babel-eslint": "^8.0.3",
     "empty": "^0.10.1",
     "yarn-or-npm": "^2.0.4"
   },
   "devDependencies": {
-    "@chantelle/eslint-config-chantelle-commonjs": "^0.2.0",
+    "@chantelle/eslint-config-chantelle-commonjs": "^0.3.1",
     "eslint": "^4.12.1",
     "eslint-config-cleanjs": "^4.0.0",
     "eslint-config-react-app": "^2.0.1",
