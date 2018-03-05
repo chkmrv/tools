@@ -1,8 +1,7 @@
 // @flow
 import { debugWithPackageName } from '@nod/debug-with-package-name'
-import { type, tap, pipe as pipeRamda } from 'ramda'
-import { pipe as pipeSanctuary, Nothing } from 'sanctuary'
-
+import { __, curryN, type, tap, pipe as pipeRamda } from 'ramda'
+import { Nothing } from 'sanctuary'
 import type { MapType, RecordOf } from 'immutable'
 export type Primitive =
   | string
@@ -13,13 +12,14 @@ export type Primitive =
   | Array<Primitive>
   | Promise<any>
   | Function
+  | typeof Nothing
 
 export const valueOrDefaultValue = (value: any, defaultValue: any) =>
   value !== undefined ? value : defaultValue
 
 export const pipe = (...args: Array<Function>): Function => (
   value: Primitive
-): Primitive => pipeSanctuary([...args], value)
+): Primitive => pipeRamda(...args)(value)
 
 export const createNumberSequence = (length: number): Array<*> => [
   ...Array(length).keys(),
@@ -133,14 +133,24 @@ export const splice = (array: Array<any>): Function => (
 export const debugReducer = (prefix: ?string = '') => (
   key: string | number,
   action: any,
-  debug: ?Function = debugWithPackageName(prefix)
-) => debug(`${key}`.concat(' %O'), action)
+  debugWithName: Function = debugWithPackageName(prefix)
+) => debugWithName(`${key}`.concat(' %O'), action)
 
-export const debug = (
-  variable: ?Primitive,
-  description?: string | number = ' %O',
-  debug: ?Function = debugWithPackageName()
-): any => tap(variable => debug(description, variable), variable)
+const finalDebugWithoutCurry = (
+  prefix: string = '',
+  description: string | number = ' %O',
+  value: Primitive = Nothing
+) => tap(value => debugWithPackageName(prefix)(description, value))(value)
+
+const finalDebug = curryN(3, finalDebugWithoutCurry)
+
+const debugWithoutCurry = (description?: string | number = '', value: any) =>
+  finalDebugWithoutCurry('', description, value)
+
+export const debug = curryN(2, debugWithoutCurry)
+
+export const debugFactory = (prefix: string): Primitive =>
+  finalDebug(prefix, __, __)
 
 export type ImmutableState = MapType | RecordOf<any>
 export const reducer = (...reducers: Array<Array<any>>): Function => (

@@ -17,7 +17,7 @@ const targets =
 
 const flowRuntimePlugin = [
   require.resolve('babel-plugin-flow-runtime'),
-  { annotate: true },
+  { annotate: true, assert: false },
 ]
 const devPlugins = isProduction ? [] : [flowRuntimePlugin]
 const commonPlugins = [

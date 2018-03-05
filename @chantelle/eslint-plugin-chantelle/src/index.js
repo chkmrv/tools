@@ -28,6 +28,10 @@ export const chantelleRules = {
     },
   ],
 
+  //flow
+  'flowtype/space-after-type-colon': 0,
+  'flowtype/space-before-type-colon': 0,
+
   //fp
   'fp/no-rest-parameters': 0,
 
