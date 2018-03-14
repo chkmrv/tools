@@ -15,11 +15,15 @@ const targets =
     ? { browsers }
     : process.env.BUILD_TARGET === 'server' ? { node } : { browsers, node }
 
-const flowRuntimePlugin = [
-  require.resolve('babel-plugin-flow-runtime'),
-  { annotate: true, assert: false },
-]
-const devPlugins = isProduction ? [] : [flowRuntimePlugin]
+console.info('Build targets are', targets)
+
+const devPlugins = isProduction
+  ? []
+  : [
+      require.resolve('babel-plugin-flow-runtime'),
+      { annotate: true, assert: false },
+    ]
+
 const commonPlugins = [
   require.resolve('babel-plugin-add-react-displayname'),
   require.resolve('babel-plugin-add-module-exports'),
