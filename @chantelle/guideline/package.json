@@ -1,0 +1,10 @@
+{
+  "name": "@chantelle/guideline",
+  "version": "0.4.5",
+  "description": "the Guideline.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:GroupeChantelle/tools.git"
+  }
+}

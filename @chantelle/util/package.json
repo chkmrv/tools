@@ -1,21 +1,16 @@
 {
   "name": "@chantelle/util",
-  "version": "0.4.1",
+  "version": "0.4.4",
   "module": "./src/index.js",
   "main": "./build/main.js",
   "dependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.4.1",
-    "@chantelle/eslint-config-chantelle": "^0.4.1",
-    "@chantelle/eslint-config-legacy": "^0.4.1",
-    "@chantelle/eslint-plugin-chantelle": "^0.4.1",
-    "@chantelle/util": "^0.4.1",
     "@nod/debug-with-package-name": "^1.0.0",
     "immutable": "^3.8.2",
     "ramda": "^0.25.0",
     "sanctuary": "^0.14.1"
   },
   "devDependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.4.1",
+    "@chantelle/babel-preset-chantelle": "^0.4.4",
     "babel-core": "^6.26.0",
     "backpack-core-yarn-workspaces": "^0.6.3",
     "cross-env": "^5.1.3",
