@@ -146,6 +146,7 @@ const finalDebug = curryN(3, finalDebugWithoutCurry)
 
 const debugWithoutCurry = (description?: string | number = '', value: any) =>
   finalDebugWithoutCurry('', description, value)
+
 export const debug = curryN(2, debugWithoutCurry)
 
 export const debugFactory = (prefix: string): Primitive =>

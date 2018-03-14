@@ -2,17 +2,17 @@
   "name": "@chantelle/eslint-plugin-chantelle",
   "main": "./build/main.js",
   "module": "./src/index.js",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org:editionlingerie/chantelle-tools.git"
   },
   "dependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.4.0",
-    "@chantelle/eslint-config-chantelle": "^0.4.0",
-    "@chantelle/eslint-config-legacy": "^0.4.0",
-    "@chantelle/eslint-plugin-chantelle": "^0.4.0",
-    "@chantelle/util": "^0.4.0",
+    "@chantelle/babel-preset-chantelle": "^0.4.1",
+    "@chantelle/eslint-config-chantelle": "^0.4.1",
+    "@chantelle/eslint-config-legacy": "^0.4.1",
+    "@chantelle/eslint-plugin-chantelle": "^0.4.1",
+    "@chantelle/util": "^0.4.1",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
     "empty": "^0.10.1",
@@ -32,7 +32,7 @@
     "yarn-or-npm": "^2.0.4"
   },
   "devDependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.4.0",
+    "@chantelle/babel-preset-chantelle": "^0.4.1",
     "ava": "^0.24.0",
     "backpack-core-yarn-workspaces": "^0.6.3",
     "cross-env": "^5.1.3",

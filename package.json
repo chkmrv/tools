@@ -27,6 +27,7 @@
     "postmerge": "yarn && yarn bootstrap",
     "precommit": "yarn lint",
     "commit": "git add -A && git diff-index --quiet HEAD || git commit -am",
+    "prepublish": "yarn build",
     "prepublishOnly": "yarn build && yarn test",
     "prepush": "yarn test",
     "tools-link-global": "yarn runAll \"yarn link\" --scope=\"@chantelle/babel-preset-chantelle\" --scope=\"@chantelle/eslint-config-chantelle\" --scope=\"@chantelle/eslint-plugin-chantelle\"",
