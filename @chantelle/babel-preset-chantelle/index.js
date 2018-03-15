@@ -20,8 +20,10 @@ console.info('Build targets are', targets)
 const devPlugins = isProduction
   ? []
   : [
-      require.resolve('babel-plugin-flow-runtime'),
-      { annotate: true, assert: false },
+      [
+        require.resolve('babel-plugin-flow-runtime'),
+        { annotate: true, assert: false },
+      ],
     ]
 
 const commonPlugins = [
@@ -41,10 +43,9 @@ const devPresets = isProduction
   ? []
   : [require.resolve('babel-preset-flow-runtime')]
 const commonPresets = [
-  require.resolve('babel-preset-flow'),
+  require.resolve('babel-preset-react-app'),
   require.resolve('babel-preset-stage-1'),
   require.resolve('babel-preset-react'),
-  require.resolve('babel-preset-react-app'),
   [
     require.resolve('babel-preset-env'),
     {
