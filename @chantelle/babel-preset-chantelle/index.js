@@ -10,21 +10,20 @@ console.info('BUILD_TARGET is', process.env.BUILD_TARGET)
 
 const browsers = ['last 2 versions']
 const node = 'current'
+const clientTarget = { browsers }
+const serverTarget =
+  process.env.BUILD_TARGET === 'server' ? { node } : { browsers, node }
 const targets =
-  process.env.BUILD_TARGET === 'client'
-    ? { browsers }
-    : process.env.BUILD_TARGET === 'server' ? { node } : { browsers, node }
+  process.env.BUILD_TARGET === 'client' ? clientTarget : serverTarget
 
 console.info('Build targets are', targets)
 
-const devPlugins = isProduction
-  ? []
-  : [
-      [
-        require.resolve('babel-plugin-flow-runtime'),
-        { annotate: true, assert: false },
-      ],
-    ]
+const flowRuntimePlugin = [
+  require.resolve('babel-plugin-flow-runtime'),
+  { annotate: true, assert: false },
+]
+
+const devPlugins = isProduction ? [] : [flowRuntimePlugin]
 
 const commonPlugins = [
   require.resolve('babel-plugin-add-react-displayname'),
