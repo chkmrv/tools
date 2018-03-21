@@ -49,7 +49,7 @@
     "@chantelle/eslint-config-chantelle": "^0.1.2",
     "@chantelle/eslint-plugin-chantelle": "^0.1.2",
     "babel-core": "^6.26.0",
-    "backpack-core-yarn-workspaces": "^0.6.3",
+    "backpack-core": "^0.7.0",
     "eslint": "^4.12.1",
     "eslint-config-cleanjs": "^4.0.0",
     "eslint-config-react-app": "^2.0.1",
