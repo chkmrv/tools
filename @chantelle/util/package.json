@@ -4,7 +4,7 @@
   "module": "./src/index.js",
   "main": "./build/main.js",
   "dependencies": {
-    "@nod/debug-with-package-name": "^1.0.0",
+    "@nod/debug-with-package-name": "^1.0.1",
     "immutable": "^3.8.2",
     "ramda": "^0.25.0",
     "sanctuary": "^0.14.1"
@@ -18,14 +18,13 @@
     "flow-typed": "^2.3.0",
     "husky": "^0.14.3",
     "jest": "^20.0.4",
-    "nodemon": "^1.12.1",
-    "yarn-or-npm": "^2.0.4"
+    "nodemon": "^1.12.1"
   },
   "eslintIgnore": [
     "node_modules"
   ],
   "scripts": {
-    "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
+    "start": "nodemon --ignore \"build\" --exec \"yarn build\"",
     "build": "cross-env NODE_ENV=production backpack build",
     "dev": "cross-env NODE_ENV=development backpack dev",
     "test": "jest"
