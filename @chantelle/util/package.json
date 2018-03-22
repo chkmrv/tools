@@ -1,31 +1,30 @@
 {
   "name": "@chantelle/util",
-  "version": "0.4.7",
+  "version": "0.4.10",
   "module": "./src/index.js",
   "main": "./build/main.js",
   "dependencies": {
-    "@nod/debug-with-package-name": "^1.0.0",
+    "@nod/debug-with-package-name": "^1.0.3",
+    "backpack-core-temp": "^0.7.1",
     "immutable": "^3.8.2",
     "ramda": "^0.25.0",
     "sanctuary": "^0.14.1"
   },
   "devDependencies": {
     "@chantelle/babel-preset-chantelle": "^0.4.7",
-    "backpack-core": "^0.7.0",
     "cross-env": "^5.1.3",
     "flow-bin": "^0.66.0",
     "flow-runtime": "^0.17.0",
     "flow-typed": "^2.3.0",
     "husky": "^0.14.3",
     "jest": "^20.0.4",
-    "nodemon": "^1.12.1",
-    "yarn-or-npm": "^2.0.4"
+    "nodemon": "^1.12.1"
   },
   "eslintIgnore": [
     "node_modules"
   ],
   "scripts": {
-    "start": "nodemon --ignore \"build\" --exec \"yon run build\"",
+    "start": "nodemon --ignore \"build\" --exec \"yarn build\"",
     "build": "cross-env NODE_ENV=production backpack build",
     "dev": "cross-env NODE_ENV=development backpack dev",
     "test": "jest"
