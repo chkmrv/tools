@@ -113,9 +113,9 @@
   dependencies:
     arrify "^1.0.1"
 
-"@nod/debug-with-package-name@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@nod/debug-with-package-name/-/debug-with-package-name-1.0.2.tgz#6b0a6a9e0934f7049d17024f4828f38c82a4bb55"
+"@nod/debug-with-package-name@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@nod/debug-with-package-name/-/debug-with-package-name-1.0.3.tgz#481dc179a68b9384a75c642df96a8e49f0a895ea"
   dependencies:
     cross-env "^5.1.4"
     debug "^3.1.0"
