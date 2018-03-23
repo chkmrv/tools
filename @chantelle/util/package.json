@@ -1,17 +1,17 @@
 {
   "name": "@chantelle/util",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "module": "./src/index.js",
   "main": "./build/main.js",
   "dependencies": {
-    "@nod/debug-with-package-name": "^1.0.1",
+    "@nod/debug-with-package-name": "^1.0.2",
+    "backpack-core-temp": "^0.7.1",
     "immutable": "^3.8.2",
     "ramda": "^0.25.0",
     "sanctuary": "^0.14.1"
   },
   "devDependencies": {
     "@chantelle/babel-preset-chantelle": "^0.4.7",
-    "backpack-core": "^0.7.0",
     "cross-env": "^5.1.3",
     "flow-bin": "^0.66.0",
     "flow-runtime": "^0.17.0",

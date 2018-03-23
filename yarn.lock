@@ -113,9 +113,9 @@
   dependencies:
     arrify "^1.0.1"
 
-"@nod/debug-with-package-name@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@nod/debug-with-package-name/-/debug-with-package-name-1.0.1.tgz#8cc04b2c78b44ab5d3739f22191943adfb22b819"
+"@nod/debug-with-package-name@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@nod/debug-with-package-name/-/debug-with-package-name-1.0.2.tgz#6b0a6a9e0934f7049d17024f4828f38c82a4bb55"
   dependencies:
     cross-env "^5.1.4"
     debug "^3.1.0"
@@ -1368,9 +1368,9 @@ babylon@^6.1.0, babylon@^6.16.1, babylon@^6.18.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
 
-backpack-core@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/backpack-core/-/backpack-core-0.7.0.tgz#ccc7bde25dfd13153bfa6d9e687dd64cb187a7ef"
+backpack-core-temp@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/backpack-core-temp/-/backpack-core-temp-0.7.1.tgz#ada223597a469cf3a01d3fd808ec5aeb10d3f285"
   dependencies:
     babel-core "^6.25.0"
     babel-loader "^7.1.0"

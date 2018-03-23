@@ -1,11 +1,11 @@
 {
   "name": "@chantelle/eslint-config-chantelle-commonjs",
-  "version": "0.4.7",
+  "version": "0.4.9",
   "description": "Chantelle common Eslint rules for CommonJs",
   "main": "./index.js",
   "license": "MIT",
   "dependencies": {
-    "@chantelle/eslint-plugin-chantelle": "^0.4.7",
+    "@chantelle/eslint-plugin-chantelle": "^0.4.9",
     "babel-eslint": "^8.0.3",
     "yarn-or-npm": "^2.0.4"
   },
