@@ -1,0 +1,4 @@
+{
+  "presets": ["@chantelle/chantelle"],
+  "plugins": ["ramda"]
+}
