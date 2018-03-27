@@ -10,7 +10,6 @@
     "yarn-or-npm": "^2.0.4"
   },
   "devDependencies": {
-    "eslint": "^4.12.1",
     "eslint-config-cleanjs": "^4.0.0",
     "eslint-config-react-app": "^2.0.1",
     "eslint-plugin-babel": "^4.1.2",
