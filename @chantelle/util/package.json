@@ -1,6 +1,6 @@
 {
   "name": "@chantelle/util",
-  "version": "0.4.10",
+  "version": "0.4.12",
   "module": "./src/index.js",
   "main": "./build/main.js",
   "dependencies": {
@@ -11,7 +11,7 @@
     "sanctuary": "^0.14.1"
   },
   "devDependencies": {
-    "@chantelle/babel-preset-chantelle": "^0.4.7",
+    "@chantelle/babel-preset-chantelle": "^0.4.12",
     "cross-env": "^5.1.3",
     "flow-bin": "^0.66.0",
     "flow-runtime": "^0.17.0",
